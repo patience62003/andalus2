@@ -100,9 +100,7 @@ export default function App(){
     <Button label="Karmod Cost Calculator (Excel)" href="/Karmod_Cost_Calculator_v2.xlsx" />
     <Button label="Nonprofit Roadmap (Morocco)" href="/Nonprofit-Roadmap-Morocco-v1.pdf" />
   </div>
-  <p className="text-xs text-slate-500 mt-3">
-    All files live in <code>/public</code>. If a link 404s, the filename (including CAPITALS) or extension doesn’t match exactly.
-  </p>
+  
 </Section>
 
   <footer className="max-w-6xl mx-auto px-6 py-12 text-sm text-slate-600">
