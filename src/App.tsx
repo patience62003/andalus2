@@ -86,17 +86,24 @@ export default function App(){
     </ol>
   </Section>
   <Section id="downloads" title="Downloads">
-    <div className="flex flex-wrap gap-3">
-     <Button label="Brochure (PDF)" comingSoon/>
-     <Button label="Bell Schedules (v2)" comingSoon/>
-     <Button label="Curriculum Maps (v2, Excel)" comingSoon/>
-     <Button label="Scope & Sequence (v3)" comingSoon/>
-     <Button label="NEASC One-Pager (v3)" comingSoon/>
-     <Button label="Tuition & Fees (Year 1)" comingSoon/>
-     <Button label="5-Year Financials (Excel)" comingSoon/>
-    </div>
-    <p className="text-xs text-slate-500 mt-3">After you upload to <code>/public</code>, change buttons to real links, e.g. <code>href="/Tuition_and_Fees_Y1_Public.pdf"</code>.</p>
-  </Section>
+  <div className="flex flex-wrap gap-3">
+    <Button label="Info Sheet (PDF)" href="/Andalus_Investor_Summary_v2.pdf" />
+    <Button label="Investor Deck (2 pages)" href="/Andalus_Investor_Deck_2pg.pdf" />
+    <Button label="Tuition & Fees (Year 1)" href="/Tuition_and_Fees_Y1_Public.pdf" />
+    <Button label="Bell Schedules (v2)" href="/Bell-Schedules-v2.pdf" />
+    <Button label="Curriculum Maps (v2, Excel)" href="/Andalus_Curriculum_Maps_v2.xlsx" />
+    <Button label="NEASC One-Pager (v3)" href="/NEASC-Alignment-OnePager-v3.pdf" />
+    <Button label="5-Year Financials (Scenarios, Excel)" href="/Andalus_5yr_Pro_Forma_SCENARIOS.xlsx" />
+    <Button label="5-Year Financials (Max Class, Excel)" href="/Andalus_5yr_Pro_Forma_MAXCLASS.xlsx" />
+    <Button label="Cost Model v2 (Karmod, PDF)" href="/Cost_Model_v2_Karmod.pdf" />
+    <Button label="Karmod Cost Calculator (Excel)" href="/Karmod_Cost_Calculator_v2.xlsx" />
+    <Button label="Nonprofit Roadmap (Morocco)" href="/Nonprofit-Roadmap-Morocco-v1.pdf" />
+  </div>
+  <p className="text-xs text-slate-500 mt-3">
+    All files live in <code>/public</code>. If a link 404s, the filename (including CAPITALS) or extension doesn’t match exactly.
+  </p>
+</Section>
+
   <footer className="max-w-6xl mx-auto px-6 py-12 text-sm text-slate-600">
    <h4 className="font-semibold">School Names</h4>
    <ol className="list-decimal list-inside mt-2 space-y-1">
