@@ -92,18 +92,16 @@ export default function App(){
   <Section id="downloads" title="Downloads">
   <div className="flex flex-wrap gap-3">
     <Button label="Info Sheet (PDF)" href="/Andalus_Investor_Summary_v2.pdf" />
-    <Button label="Investor Deck (2 pages)" href="/Andalus_Investor_Deck_2pg.pdf" />
-    <Button label="Tuition & Fees (Year 1)" href="/Tuition_and_Fees_Y1_Public_v2.pdf" />
+    <Button label="Investor Deck (2 pages)" href="/Investor_Deck_2pg_v3.pdf" />
+    <Button label="Tuition & Fees (Year 1)" href="/Tuition_and_Fees_Y1_Public_v3.pdf" />
+    <Button label="5-Year P&L (PDF, AAC-like costs)" href="/FiveYear_PnL_AAC_like_$2000tuition_v3.pdf" />
+    <Button label="5-Year Financials (Excel, AAC-like costs)" href="/Andalus_5yr_PnL_AAC_like_with_OPEX_v3.xlsx" />
+    <Button label="NEASC One-Pager (v3)" href="/NEASC-Alignment-OnePager-v3.pdf" />
     <Button label="Bell Schedules (v2)" href="/Bell-Schedules-v2.pdf" />
     <Button label="Curriculum Maps (v2, Excel)" href="/Andalus_Curriculum_Maps_v2.xlsx" />
-    <Button label="NEASC One-Pager (v3)" href="/NEASC-Alignment-OnePager-v3.pdf" />
-    <Button label="5-Year Financials (PDF)" href="/FiveYear_Financials_v3_$2000tuition.pdf" />
-    <Button label="5-Year Financials (Excel)" href="/Andalus_5yr_Pro_Forma_SCENARIOS_v3.xlsx" />
-    <Button label="Cost Model v2 (Karmod)" href="/Cost_Model_v2_Karmod.pdf" />
-    <Button label="Karmod Cost Calculator (Excel)" href="/Karmod_Cost_Calculator_v2.xlsx" />
-    <Button label="Nonprofit Roadmap (Morocco)" href="/Nonprofit-Roadmap-Morocco-v1.pdf" />
   </div>
 </Section>
+
 
 
   <footer className="max-w-6xl mx-auto px-6 py-12 text-sm text-slate-600">
