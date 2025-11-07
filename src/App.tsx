@@ -39,9 +39,11 @@ export default function App(){
    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Andalus International School of Qur&apos;an &amp; AI</h1>
    <div className="mt-4"><Badge text="Nonprofit: in formation"/></div>
    <p className="mt-5 max-w-3xl text-slate-700">A mission-driven academy where students memorize the Qur&apos;an, study <span className="font-semibold">al-Qurtubi</span> line-by-line, and master world-class math, science, engineering, and computer science — with <span className="font-semibold">no homework</span>. No Arabic needed upon entry; placement supports Arabic-from-zero.</p>
-   <div className="mt-6 flex flex-wrap items-center gap-3">
-  <Button label="Download Brochure (PDF)" href="/Andalus_Investor_Summary_v2.pdf" /> 
-<Button label="5-Year Financials" href="/FiveYear_Financials_v3_$2000tuition.pdf" />
+  <div className="mt-6 flex flex-wrap items-center gap-3">
+  <Button label="Download Brochure (PDF)" href="/Andalus_Investor_Summary_v2.pdf" />
+  <Button label="5-Year Financials" href="/FiveYear_PnL_AAC_like_$2000tuition_v3.pdf" />
+</div>
+
 
 
    </div>
