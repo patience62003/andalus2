@@ -40,8 +40,9 @@ export default function App(){
    <div className="mt-4"><Badge text="Nonprofit: in formation"/></div>
    <p className="mt-5 max-w-3xl text-slate-700">A mission-driven academy where students memorize the Qur&apos;an, study <span className="font-semibold">al-Qurtubi</span> line-by-line, and master world-class math, science, engineering, and computer science — with <span className="font-semibold">no homework</span>. No Arabic needed upon entry; placement supports Arabic-from-zero.</p>
    <div className="mt-6 flex flex-wrap items-center gap-3">
-   <Button label="Download Brochure (PDF)" href="/Andalus_Investor_Summary_v2.pdf" />
-<Button label="5-Year Financials" href="/Andalus_5yr_Pro_Forma_SCENARIOS.xlsx" />
+  <Button label="Download Brochure (PDF)" href="/Andalus_Investor_Summary_v2.pdf" /> 
+<Button label="5-Year Financials" href="/FiveYear_Financials_v3_$2000tuition.pdf" />
+
 
    </div>
   </header>
