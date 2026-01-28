@@ -1,31 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-/** ---------- UI PRIMITIVES ---------- */
-function Button({
-  label,
-  href,
-  comingSoon = false,
-}: {
+type ButtonProps = {
   label: string;
   href?: string;
-  comingSoon?: boolean;
-}) {
+  onClick?: () => void;
+  variant?: "primary" | "secondary" | "outline";
+};
+
+function Button({ label, href, onClick, variant = "primary" }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors bg-slate-900 text-white hover:bg-slate-800";
-  if (comingSoon || !href) {
+    "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors";
+  const styles: Record<string, string> = {
+    primary: `${base} bg-slate-900 text-white hover:bg-slate-800`,
+    secondary: `${base} bg-emerald-600 text-white hover:bg-emerald-500`,
+    outline: `${base} border border-slate-300 text-slate-800 bg-white hover:bg-slate-50`,
+  };
+
+  if (href) {
     return (
-      <button
-        onClick={() => alert("This file will be uploaded soon.")}
-        className={base}
-      >
-        {label} <span className="ml-2 opacity-70">(coming soon)</span>
-      </button>
+      <a className={styles[variant]} href={href} target="_blank" rel="noreferrer">
+        {label}
+      </a>
     );
   }
+
   return (
-    <a className={base} href={href} target="_blank" rel="noreferrer">
+    <button className={styles[variant]} onClick={onClick}>
       {label}
-    </a>
+    </button>
+  );
+}
+
+function Badge({ text }: { text: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-semibold">
+      ● {text}
+    </span>
   );
 }
 
@@ -61,230 +71,286 @@ function Section({
   intro?: string;
 }) {
   return (
-    <section id={id} className="max-w-6xl mx-auto px-6 py-10">
+    <section id={id} className="max-w-5xl mx-auto px-6 py-8">
       <h2 className="text-2xl font-bold mb-3 text-slate-900">{title}</h2>
-      {intro && <p className="text-sm text-slate-700 mb-6">{intro}</p>}
+      {intro && <p className="text-sm text-slate-700 mb-5">{intro}</p>}
       {children}
     </section>
   );
 }
 
-/** ---------- APP ---------- */
 export default function App() {
-  const [open, setOpen] = useState(false);
+  // TODO: replace this placeholder with your real Google Form URL
+  const APPLY_LINK = "https://forms.gle/REPLACE_WITH_YOUR_FORM_LINK";
+
+  const [showLeadModal, setShowLeadModal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLeadModal(true), 10000); // 10 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLeadSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Thank you! We will contact you in shaa Allah.");
+    setShowLeadModal(false);
+  };
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
-      {/* NAV */}
-      <nav className="sticky top-0 z-20 backdrop-blur bg-white/85 border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-          <a href="#" className="font-extrabold tracking-tight">
+      {/* Sticky top nav */}
+      <nav className="sticky top-0 z-20 backdrop-blur bg-white/90 border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+          <a href="#top" className="font-extrabold tracking-tight text-slate-900">
             Andalus
           </a>
-          <button
-            className="md:hidden px-3 py-2 rounded border"
-            onClick={() => setOpen(!open)}
-          >
-            Menu
-          </button>
-          <div className="hidden md:flex items-center gap-5 text-sm">
-            <a href="#qurtubi" className="hover:underline">
-              Why Qurtubi
+          <div className="flex items-center gap-3 text-sm">
+            <a href="#overview" className="px-3 py-1 rounded hover:bg-slate-100">
+              Overview
             </a>
-            <a href="#cambridge" className="hover:underline">
-              Cambridge Pathway
-            </a>
-            <a href="#curriculum" className="hover:underline">
+            <a href="#curriculum" className="px-3 py-1 rounded hover:bg-slate-100">
               Curriculum
             </a>
-            <a href="#online" className="hover:underline">
-              Online Learning
+            <a href="#tuition" className="px-3 py-1 rounded hover:bg-slate-100">
+              Tuition
             </a>
-            <a href="#downloads" className="hover:underline">
-              Downloads
+            <a href="#apply" className="px-3 py-1 rounded hover:bg-slate-100">
+              Apply
             </a>
+            <a href="#contact" className="px-3 py-1 rounded hover:bg-slate-100">
+              Contact
+            </a>
+            <Button label="APPLY" href={APPLY_LINK} variant="secondary" />
           </div>
         </div>
-        {open && (
-          <div className="md:hidden px-6 pb-4 flex flex-col gap-2 text-sm">
-            <a href="#qurtubi" onClick={() => setOpen(false)}>
-              Why Qurtubi
-            </a>
-            <a href="#cambridge" onClick={() => setOpen(false)}>
-              Cambridge Pathway
-            </a>
-            <a href="#curriculum" onClick={() => setOpen(false)}>
-              Curriculum
-            </a>
-            <a href="#online" onClick={() => setOpen(false)}>
-              Online Learning
-            </a>
-            <a href="#downloads" onClick={() => setOpen(false)}>
-              Downloads
-            </a>
-          </div>
-        )}
       </nav>
 
-      {/* HERO */}
-      <header className="max-w-6xl mx-auto px-6 py-10">
+      {/* HERO / OVERVIEW */}
+      <header id="overview" className="max-w-5xl mx-auto px-6 py-10">
         <p className="text-xs tracking-wide text-slate-500 mb-2">
-          ONLINE BILINGUAL (ARABIC/ENGLISH)
+          ONLINE BILINGUAL ISLAMIC SCHOOL · OPENING AUGUST 2026
         </p>
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
           Andalus International School of Qur&apos;an &amp; AI
         </h1>
-        <p className="mt-5 max-w-3xl text-slate-700">
-          100% online, bilingual (Arabic/English) Islamic school. Students
-          complete Qur&apos;an study with al-Qurtubi&apos;s tafsir while
-          mastering Cambridge IGCSE and A-Level subjects. No separate homework
-          during live term time; independent practice is scheduled inside the
-          school day. Arabic-from-zero placement supported.
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Badge text="Qur'an & Tafseer al-Qurtubi as the spine" />
+          <Badge text="Cambridge Primary (Grades 1–5)" />
+          <Badge text="AI-supported STEM projects" />
+        </div>
+        <p className="mt-4 text-sm text-amber-700 font-semibold">
+          For the inaugural year (August 2026), Andalus is accepting applications for{" "}
+          <span className="underline">Grades 1–5 only</span>.
         </p>
+        <p className="mt-4 max-w-3xl text-slate-700 text-sm md:text-base">
+          Andalus is a Qur&apos;an-centric online school for practicing Muslim families. Pupils
+          memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for identity formation, and
+          follow the Cambridge Primary pathway in English for mathematics, science, computing, and
+          global perspectives. AI is used carefully to support practice and projects, while teachers
+          remain the murabbīn.
+        </p>
+
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Button label="Prospectus (PDF)" comingSoon />
-          <Button label="Fees (Online, PDF)" comingSoon />
+          <Button label="Apply / Join Interest List" href={APPLY_LINK} variant="secondary" />
+          <Button
+            label="Tuition & Fees (PDF)"
+            href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
+            variant="outline"
+          />
         </div>
       </header>
 
-      {/* KEY CARDS */}
-      <section className="max-w-6xl mx-auto px-6 pb-4">
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card title="Qur'an & Qurtubi (Online Seminars)" emoji="📜">
-            Line-by-line tafsir with integrated fiqh, hadith, sira, and balagha.
-            Arabic acquisition through usage; Arabic-from-zero pathway
-            available. Humanities and arts are embedded within tafsir seminars.
+      {/* PILLARS */}
+      <section className="max-w-5xl mx-auto px-6 pb-6">
+        <div className="grid gap-6 md:grid-cols-3">
+          <Card title="Qur'an & Qurtubi" emoji="📜">
+            Qur&apos;an memorisation, tajwīd, and tafsir anchored in Tafseer al-Qurtubi, forming the
+            spine for aqīdah, fiqh, hadith, and adab.
           </Card>
-          <Card title="Cambridge IGCSE / A-Level" emoji="🎓">
-            Full Cambridge pathway delivered online in English. Subject choices
-            are sequenced for university entry; Arabic/Islamic Studies offered
-            in Arabic or English with bilingual supports.
+          <Card title="Cambridge Primary" emoji="📚">
+            English, Mathematics, Science, Global Perspectives, and Computing using the Cambridge
+            Primary frameworks, fully online.
           </Card>
-          <Card title="AI-Forward STEM (Online)" emoji="💻">
-            Computing, data literacy, and responsible AI aligned to Cambridge
-            syllabi. Project-based work with weekly live labs and office hours.
-          </Card>
-          <Card title="Global Timetable & Safeguarding" emoji="🌍">
-            Time-zoned live sessions plus recorded catch-up. Proctoring,
-            attendance, and safeguarding policies designed for online delivery.
+          <Card title="Online & Bilingual" emoji="🌍">
+            Arabic (fuṣḥā) for Islamic subjects; English for Cambridge subjects. Schedules suited to
+            families across the Gulf, North Africa, Europe, and beyond.
           </Card>
         </div>
       </section>
 
-      {/* WHY QURTUBI */}
-      <Section
-        id="qurtubi"
-        title="Why a Qurtubi School?"
-        intro="Classical Andalus integration of revelation and reason, adapted for modern online learning."
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          <Card title="Integrated Theology" emoji="🧭">
-            Aqida, ahkam, sira, and hadith are interwoven as tafsir progresses
-            so students see the whole din in one curriculum.
-          </Card>
-          <Card title="Arabic by Usage" emoji="🗣️">
-            No Arabic required at entry; Arabic grows naturally through Qur&apos;an,
-            poetry, and daily seminar practice. Arabic-from-zero placement.
-          </Card>
-          <Card title="Andalus Ethos" emoji="🏛️">
-            Craft, geometry, prosody, and logic inform modern computing and data
-            projects, reinforcing clarity and discipline of thought.
-          </Card>
-        </div>
-      </Section>
-
-      {/* CAMBRIDGE */}
-      <Section
-        id="cambridge"
-        title="Cambridge Pathway (IGCSE / A-Level)"
-        intro="Internationally recognized exams, fully compatible with online delivery."
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          <Card title="Lower Secondary Bridge" emoji="🧩">
-            Core foundations in English, Maths, Science, and Computing; Arabic
-            literacy ramps from beginner if needed.
-          </Card>
-          <Card title="IGCSE (Grades 9–10)" emoji="🧪">
-            Typical set: English, Maths, Sciences, Computer Science, plus
-            electives. Optional Arabic as First/Second Language.
-          </Card>
-          <Card title="A-Level (Grades 11–12)" emoji="🎯">
-            Depth in subjects such as Mathematics, Physics, Computer Science,
-            and additional options per cohort demand; capstone research projects.
-          </Card>
-        </div>
-      </Section>
-
-      {/* CURRICULUM OVERVIEW */}
+      {/* CURRICULUM */}
       <Section
         id="curriculum"
-        title="Curriculum Overview"
-        intro="Two equal halves: Qur'an/Qurtubi (humanities embedded) and Cambridge academics with AI-forward STEM."
+        title="Curriculum Snapshot (Grades 1–5)"
+        intro="Four Islamic core teachers (Qur'an, Fiqh, Hadith, Arabic) and Cambridge academics designed together."
       >
         <div className="grid gap-6 md:grid-cols-2">
-          <Card title="Qur'an & Qurtubi" emoji="📚">
-            Daily hifz and tafsir seminars; fiqh, hadith, balagha, and prosody
-            integrated. Language arts outcomes met through scholarly reading and
-            argumentation.
+          <Card title="Islamic Core" emoji="🕋">
+            Qur&apos;an (memorisation, tajwīd, Tafseer al-Qurtubi), Fiqh (with usūl and qawā‘id as
+            age-appropriate), Hadith (with usūl al-hadith and rijāl basics), and Arabic language.
+            Sīrah and adab are woven into these subjects rather than taught separately.
           </Card>
-          <Card title="STEM & AI" emoji="🤖">
-            Cambridge-aligned Maths/Science plus Computing and data projects.
-            Responsible AI practice, model evaluation, and applied coding.
+          <Card title="Cambridge Primary Core" emoji="🔬">
+            Cambridge Primary English, Mathematics, Science, Global Perspectives, and Computing,
+            preparing pupils for later Cambridge assessments.
           </Card>
+          <Card title="Language Development" emoji="💬">
+            Arabic (fuṣḥā) for Qur&apos;an and Islamic texts; English for reading, writing, and
+            discussion in Cambridge classes. Support for pupils entering with different backgrounds.
+          </Card>
+          <Card title="AI in Practice" emoji="🤖">
+            AI tools are used to visualise concepts, give feedback, and support projects — always under
+            teacher supervision and within clear Islamic ethical boundaries.
+          </Card>
+        </div>
+
+        <div className="mt-5">
+          <Button
+            label="Curriculum Maps (Grades 1–5, PDF)"
+            href="/Curriculum_Maps_Andalus_Online_Cambridge_1-5.pdf"
+          />
         </div>
       </Section>
 
-      {/* ONLINE MODEL */}
+      {/* TUITION */}
       <Section
-        id="online"
-        title="Online Learning Model"
-        intro="Live classes + guided independent work; everything designed for fully online schooling."
+        id="tuition"
+        title="Tuition & Fees – Year 1"
+        intro="Simple, transparent fees for the first year of operation (Grades 1–5 only)."
       >
-        <ul className="grid gap-4 md:grid-cols-2 text-sm text-slate-700">
-          <li className="rounded-xl border border-slate-200 bg-white p-4">
-            🗓️ Timetable: time-zoned live sessions and daily independent study
-            blocks (no separate homework).
+        <ul className="text-sm text-slate-700 space-y-2">
+          <li>
+            • Annual tuition per pupil (Grades 1–5): <b>4,500 USD</b>.
           </li>
-          <li className="rounded-xl border border-slate-200 bg-white p-4">
-            🛠️ Tools: LMS, video classroom, e-assessment, and
-            plagiarism/proctoring systems.
+          <li>• Same tuition for each grade level in Year 1.</li>
+          <li>
+            • Example payment plan: one payment of 4,500 USD, or 10 monthly payments of 450 USD.
           </li>
-          <li className="rounded-xl border border-slate-200 bg-white p-4">
-            🗣️ Bilingual: Arabic and English tracks with language supports and
-            Arabic-from-zero placement.
+          <li>
+            • <b>Refundable enrollment deposit:</b> 500 USD per pupil after a conditional offer is
+            made. Credited towards tuition.
           </li>
-          <li className="rounded-xl border border-slate-200 bg-white p-4">
-            🎓 Credentials: Cambridge IGCSE and A-Level preparation with
-            supervised mocks and exam registration guidance.
+          <li>
+            • Deposit fully refundable until 30 days before term start; typically non-refundable after
+            that except documented hardship cases at the school&apos;s discretion.
           </li>
         </ul>
+
+        <div className="mt-4">
+          <Button
+            label="Download Tuition & Fees (PDF)"
+            href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
+            variant="outline"
+          />
+        </div>
       </Section>
 
-      {/* DOWNLOADS */}
-      <Section id="downloads" title="Downloads">
-        <div className="flex flex-wrap gap-3">
-          {/* Use these placeholders now; swap comingSoon for hrefs once files are uploaded to /public */}
-          <Button label="Prospectus (PDF)" comingSoon />
-          <Button label="Fee Schedule (Online, PDF)" comingSoon />
-          <Button label="Cambridge Pathway (IGCSE/A-Level, PDF)" comingSoon />
-          <Button label="Technology & Timetable Guide (PDF)" comingSoon />
-          <Button label="Safeguarding & Attendance (PDF)" comingSoon />
-          <Button label="Admissions Guide (PDF)" comingSoon />
+      {/* APPLY SECTION */}
+      <Section
+        id="apply"
+        title="How to Apply"
+        intro="Applications for the first cohort (Grades 1–5, August 2026) are now open."
+      >
+        <ol className="list-decimal list-inside text-sm text-slate-700 space-y-2">
+          <li>
+            Fill out the online application / interest form (one per family). Provide basic details:
+            parent contact, child&apos;s age, current grade, location, and Qur&apos;an background.
+          </li>
+          <li>
+            If there is a potential fit, the school will invite you to a short online info call and a
+            simple placement check.
+          </li>
+          <li>
+            If an offer is made and you wish to accept, you will be asked to pay the refundable
+            enrollment deposit (500 USD) to secure the place.
+          </li>
+        </ol>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Button label="Apply / Join Interest List" href={APPLY_LINK} variant="secondary" />
+          <Button
+            label="Download Tuition & Fees"
+            href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
+            variant="outline"
+          />
+        </div>
+      </Section>
+
+      {/* CONTACT */}
+      <Section
+        id="contact"
+        title="Contact"
+        intro="For questions about admissions, teaching roles, or partnerships."
+      >
+        <div className="space-y-2 text-sm text-slate-700">
+          <p>📧 Email: muslimlensinstitute@consultant.com</p>
+          <p>🌐 Applications are accepted only through LinkedIn and the online apply form.</p>
+          <p>
+            If you email, please include your name, country, child&apos;s current grade, and whether you
+            are asking as a parent, teacher, or partner.
+          </p>
         </div>
       </Section>
 
       {/* FOOTER */}
-      <footer className="max-w-6xl mx-auto px-6 py-12 text-sm text-slate-600">
-        <h4 className="font-semibold">School Names</h4>
-        <ol className="list-decimal list-inside mt-2 space-y-1">
-          <li>Andalus International School of Qur&apos;an &amp; AI</li>
-          <li>Cordoba Qurtubi Academy</li>
-          <li>Qurtubi School of Qur&apos;an, Law &amp; AI</li>
-        </ol>
-        <p className="mt-6 text-xs text-slate-500">
-          Online bilingual Islamic school. Cambridge IGCSE / A-Level pathway.
+      <footer className="max-w-5xl mx-auto px-6 py-10 text-xs text-slate-500">
+        <p>
+          Andalus International School of Qur&apos;an &amp; AI · Online, bilingual Qur&apos;an-centric
+          school using Tafseer al-Qurtubi and the Cambridge Primary pathway (Grades 1–5).
         </p>
       </footer>
+
+      {/* LEAD CAPTURE POPUP */}
+      {showLeadModal && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 px-4">
+          <div className="max-w-sm w-full rounded-2xl bg-white p-5 shadow-lg">
+            <h3 className="text-base font-semibold text-slate-900 mb-2">
+              Stay informed about Andalus (Grades 1–5, August 2026)
+            </h3>
+            <p className="text-xs text-slate-600 mb-3">
+              Leave your contact details and we&apos;ll send you updates about admissions and
+              information sessions in shaa Allah.
+            </p>
+            <form onSubmit={handleLeadSubmit} className="space-y-2 text-sm">
+              <div>
+                <label className="block text-xs text-slate-600 mb-1">Parent name</label>
+                <input
+                  className="w-full rounded border border-slate-300 px-2 py-1 text-sm"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-slate-600 mb-1">Email</label>
+                <input
+                  type="email"
+                  className="w-full rounded border border-slate-300 px-2 py-1 text-sm"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-slate-600 mb-1">
+                  Phone / WhatsApp (optional)
+                </label>
+                <input className="w-full rounded border border-slate-300 px-2 py-1 text-sm" />
+              </div>
+              <div className="flex gap-2 pt-2">
+                <button
+                  type="submit"
+                  className="inline-flex-1 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-500"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowLeadModal(false)}
+                  className="inline-flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                >
+                  Maybe later
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
