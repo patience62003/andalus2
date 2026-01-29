@@ -81,7 +81,7 @@ function Section({
 
 export default function App() {
   const APPLY_LINK =
-    "https://docs.google.com/forms/d/e/1FAIpQLSd9j0FERdFhhw9Dfz26qJu1qypU521orgNrln49nkq9ZPhFlg/viewform?usp=sharing&ouid=104479175709144250534";
+    "https://forms.gle/bt6Vuv3sEm4CkDAE7";
 
   const [showLeadModal, setShowLeadModal] = useState(false);
 
