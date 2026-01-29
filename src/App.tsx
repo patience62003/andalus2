@@ -80,24 +80,23 @@ function Section({
 }
 
 export default function App() {
-  // TODO: replace this placeholder with your real Google Form URL
-  const APPLY_LINK = "https://forms.gle/REPLACE_WITH_YOUR_FORM_LINK";
+  const APPLY_LINK =
+    "https://docs.google.com/forms/d/e/1FAIpQLSd9j0FERdFhhw9Dfz26qJu1qypU521orgNrln49nkq9ZPhFlg/viewform?usp=sharing&ouid=104479175709144250534";
 
   const [showLeadModal, setShowLeadModal] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowLeadModal(true), 10000); // 10 seconds
+    const timer = setTimeout(() => setShowLeadModal(true), 10000);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you! We will contact you in shaa Allah.");
+  const handleLeadClick = () => {
+    window.open(APPLY_LINK, "_blank", "noopener,noreferrer");
     setShowLeadModal(false);
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="min-h-screen bg-slate-50 text-slate-900" id="top">
       {/* Sticky top nav */}
       <nav className="sticky top-0 z-20 backdrop-blur bg-white/90 border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -108,18 +107,16 @@ export default function App() {
             <a href="#overview" className="px-3 py-1 rounded hover:bg-slate-100">
               Overview
             </a>
+            <a href="#highlights" className="px-3 py-1 rounded hover:bg-slate-100">
+              Highlights
+            </a>
             <a href="#curriculum" className="px-3 py-1 rounded hover:bg-slate-100">
               Curriculum
             </a>
             <a href="#tuition" className="px-3 py-1 rounded hover:bg-slate-100">
               Tuition
             </a>
-            <a href="#apply" className="px-3 py-1 rounded hover:bg-slate-100">
-              Apply
-            </a>
-            <a href="#contact" className="px-3 py-1 rounded hover:bg-slate-100">
-              Contact
-            </a>
+            {/* Removed the old text "Apply" link here */}
             <Button label="APPLY" href={APPLY_LINK} variant="secondary" />
           </div>
         </div>
@@ -136,18 +133,18 @@ export default function App() {
         <div className="mt-4 flex flex-wrap gap-2">
           <Badge text="Qur'an & Tafseer al-Qurtubi as the spine" />
           <Badge text="Cambridge Primary (Grades 1–5)" />
-          <Badge text="AI-supported STEM projects" />
+          <Badge text="Bilingual Arabic / English" />
         </div>
         <p className="mt-4 text-sm text-amber-700 font-semibold">
           For the inaugural year (August 2026), Andalus is accepting applications for{" "}
           <span className="underline">Grades 1–5 only</span>.
         </p>
         <p className="mt-4 max-w-3xl text-slate-700 text-sm md:text-base">
-          Andalus is a Qur&apos;an-centric online school for practicing Muslim families. Pupils
-          memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for identity formation, and
-          follow the Cambridge Primary pathway in English for mathematics, science, computing, and
-          global perspectives. AI is used carefully to support practice and projects, while teachers
-          remain the murabbīn.
+          Andalus is a Qur&apos;an-centric online school for practicing Muslim families. Pupils memorise
+          the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for identity formation, and follow the
+          Cambridge Primary pathway in English for mathematics, science, computing, and global
+          perspectives. AI is used carefully to support practice and projects, while teachers remain
+          the murabbīn.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -160,23 +157,41 @@ export default function App() {
         </div>
       </header>
 
-      {/* PILLARS */}
-      <section className="max-w-5xl mx-auto px-6 pb-6">
-        <div className="grid gap-6 md:grid-cols-3">
-          <Card title="Qur'an & Qurtubi" emoji="📜">
-            Qur&apos;an memorisation, tajwīd, and tafsir anchored in Tafseer al-Qurtubi, forming the
-            spine for aqīdah, fiqh, hadith, and adab.
-          </Card>
-          <Card title="Cambridge Primary" emoji="📚">
-            English, Mathematics, Science, Global Perspectives, and Computing using the Cambridge
-            Primary frameworks, fully online.
-          </Card>
-          <Card title="Online & Bilingual" emoji="🌍">
-            Arabic (fuṣḥā) for Islamic subjects; English for Cambridge subjects. Schedules suited to
-            families across the Gulf, North Africa, Europe, and beyond.
-          </Card>
-        </div>
-      </section>
+      {/* HIGHLIGHTS */}
+      <Section
+        id="highlights"
+        title="Why Families Choose Andalus"
+        intro="A focused online environment designed for serious Muslim families who want Qur’an, character, and academic excellence together."
+      >
+        <ul className="grid gap-3 md:grid-cols-2 text-sm text-slate-700">
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>Live instruction from teachers</b> – daily live sessions rather than self-paced videos.
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>Hand-picked peers</b> from around the world, providing well-mannered online companionship
+            in daily lessons.
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>Qualified Cambridge subject teachers</b> for English, Mathematics, Science, Global
+            Perspectives, and Computing.
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>Certified Islamic studies teachers</b> (Qur&apos;an, Fiqh, Hadith, Arabic) grounded in
+            orthodox Sunni scholarship.
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>Small class sizes</b> with deliberate sectioning to preserve focus, akhlāq, and interaction.
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>Regular feedback, assessments, and reports</b> so parents can see progress clearly across
+            both Islamic and Cambridge subjects.
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4">
+            ✅ <b>College and career counseling</b> as pupils grow, helping families plan pathways through
+            IGCSE, A-Levels, and beyond.
+          </li>
+        </ul>
+      </Section>
 
       {/* CURRICULUM */}
       <Section
@@ -195,8 +210,8 @@ export default function App() {
             preparing pupils for later Cambridge assessments.
           </Card>
           <Card title="Language Development" emoji="💬">
-            Arabic (fuṣḥā) for Qur&apos;an and Islamic texts; English for reading, writing, and
-            discussion in Cambridge classes. Support for pupils entering with different backgrounds.
+            Arabic (fuṣḥā) for Qur&apos;an and Islamic texts; English for reading, writing, and discussion in
+            Cambridge classes. Support for pupils entering with different backgrounds.
           </Card>
           <Card title="AI in Practice" emoji="🤖">
             AI tools are used to visualise concepts, give feedback, and support projects — always under
@@ -231,8 +246,12 @@ export default function App() {
             made. Credited towards tuition.
           </li>
           <li>
-            • Deposit fully refundable until 30 days before term start; typically non-refundable after
+            • Deposit fully refundable until 30 days before term start; normally non-refundable after
             that except documented hardship cases at the school&apos;s discretion.
+          </li>
+          <li>
+            • Tuition is all-inclusive for core learning: live classes, Islamic studies, and online
+            subscriptions to STEM and literacy apps used in lessons.
           </li>
         </ul>
 
@@ -254,7 +273,7 @@ export default function App() {
         <ol className="list-decimal list-inside text-sm text-slate-700 space-y-2">
           <li>
             Fill out the online application / interest form (one per family). Provide basic details:
-            parent contact, child&apos;s age, current grade, location, and Qur&apos;an background.
+            parent contact, child&apos;s age, requested grade, location, and Qur&apos;an background.
           </li>
           <li>
             If there is a potential fit, the school will invite you to a short online info call and a
@@ -285,69 +304,46 @@ export default function App() {
           <p>📧 Email: muslimlensinstitute@consultant.com</p>
           <p>🌐 Applications are accepted only through LinkedIn and the online apply form.</p>
           <p>
-            If you email, please include your name, country, child&apos;s current grade, and whether you
-            are asking as a parent, teacher, or partner.
+            If you email, please include your name, country, child&apos;s current or intended grade, and
+            whether you are asking as a parent, teacher, or partner.
           </p>
         </div>
       </Section>
 
       {/* FOOTER */}
       <footer className="max-w-5xl mx-auto px-6 py-10 text-xs text-slate-500">
-        <p>
-          Andalus International School of Qur&apos;an &amp; AI · Online, bilingual Qur&apos;an-centric
-          school using Tafseer al-Qurtubi and the Cambridge Primary pathway (Grades 1–5).
+        <p>Andalus International School of Qur&apos;an &amp; AI – Online, Grades 1–5 (opening August 2026).</p>
+        <p className="mt-1">
+          Curriculum: Qur&apos;an & Tafseer al-Qurtubi (Islamic core) · Cambridge Primary (English, Maths,
+          Science, Global Perspectives, Computing).
         </p>
       </footer>
 
-      {/* LEAD CAPTURE POPUP */}
+      {/* LEAD POPUP → SIMPLE LINK TO GOOGLE FORM */}
       {showLeadModal && (
-        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 px-4">
-          <div className="max-w-sm w-full rounded-2xl bg-white p-5 shadow-lg">
-            <h3 className="text-base font-semibold text-slate-900 mb-2">
-              Stay informed about Andalus (Grades 1–5, August 2026)
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/40">
+          <div className="max-w-md w-full rounded-2xl bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              Get updates about Andalus (Grades 1–5)
             </h3>
-            <p className="text-xs text-slate-600 mb-3">
-              Leave your contact details and we&apos;ll send you updates about admissions and
-              information sessions in shaa Allah.
+            <p className="text-sm text-slate-700 mb-4">
+              Andalus International School of Qur&apos;an &amp; AI is planning to open its online primary
+              programme in August 2026, in shā&apos; Allāh. If you would like to receive updates and
+              admissions information, please fill out our short application / interest form.
             </p>
-            <form onSubmit={handleLeadSubmit} className="space-y-2 text-sm">
-              <div>
-                <label className="block text-xs text-slate-600 mb-1">Parent name</label>
-                <input
-                  className="w-full rounded border border-slate-300 px-2 py-1 text-sm"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-slate-600 mb-1">Email</label>
-                <input
-                  type="email"
-                  className="w-full rounded border border-slate-300 px-2 py-1 text-sm"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-slate-600 mb-1">
-                  Phone / WhatsApp (optional)
-                </label>
-                <input className="w-full rounded border border-slate-300 px-2 py-1 text-sm" />
-              </div>
-              <div className="flex gap-2 pt-2">
-                <button
-                  type="submit"
-                  className="inline-flex-1 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-500"
-                >
-                  Submit
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowLeadModal(false)}
-                  className="inline-flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
-                >
-                  Maybe later
-                </button>
-              </div>
-            </form>
+            <div className="flex flex-wrap gap-3 mt-2">
+              <Button
+                label="Open application / interest form"
+                onClick={handleLeadClick}
+                variant="secondary"
+              />
+              <button
+                className="text-xs text-slate-500 hover:underline"
+                onClick={() => setShowLeadModal(false)}
+              >
+                Not now
+              </button>
+            </div>
           </div>
         </div>
       )}
