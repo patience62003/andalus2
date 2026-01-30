@@ -79,7 +79,6 @@ export default function App() {
       <nav className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            {/* Text logo; you can swap to image if desired */}
             <span className="text-base md:text-lg font-extrabold tracking-tight text-slate-900">
               Andalus
             </span>
@@ -92,7 +91,9 @@ export default function App() {
             <NavLink href="#tuition" label="Tuition" />
             <NavLink href="#faq" label="FAQ" />
             {/* THE ONLY APPLY BUTTON */}
-            <PrimaryButton href={APPLY_URL}>Apply / Join Interest List</PrimaryButton>
+            <PrimaryButton href={APPLY_URL}>
+              Apply / Join Interest List
+            </PrimaryButton>
           </div>
 
           <button
@@ -135,24 +136,15 @@ export default function App() {
           <Tag>Bilingual Arabic / English</Tag>
         </div>
 
-        <p className="max-w-3xl text-sm md:text-base text-slate-700 mb-4">
-          For the inaugural year (August 2026), Andalus is accepting
-          applications for <span className="font-semibold">Grades 1–5 only</span>.
-          Pupils memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for
-          identity formation, and follow the Cambridge Primary pathway in
-          English for mathematics, science, computing, and global perspectives.
-          AI is used carefully to support practice and projects, while teachers
-          remain the murabbīn.
+        <p className="max-w-3xl text-sm md:text-base text-slate-700">
+          For the inaugural year (August 2026), Andalus is accepting applications
+          for <span className="font-semibold">Grades 1–5 only</span>. Pupils
+          memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for
+          identity formation, and follow the Cambridge Primary pathway in English
+          for mathematics, science, computing, and global perspectives. AI is
+          used carefully to support practice and projects, while teachers remain
+          the murabbīn.
         </p>
-
-        <div className="flex flex-wrap gap-3">
-          {/* This is not a second Apply button, it’s the same CTA exposed again for convenience.
-              If you want *strictly* one visible Apply button on the whole site,
-              you can delete this block and rely only on the navbar button. */}
-          <PrimaryButton href={APPLY_URL}>
-            Apply / Join Interest List
-          </PrimaryButton>
-        </div>
       </header>
 
       {/* OVERVIEW */}
@@ -259,11 +251,6 @@ export default function App() {
           <OutlineButton href={CURRICULUM_URL}>
             Download Full Curriculum Map (PDF)
           </OutlineButton>
-          <p className="mt-2 text-xs text-slate-500">
-            Please ensure the file{" "}
-            <code>Curriculum_Maps_Andalus_Online_Cambridge_1-5_v3.pdf</code> is
-            uploaded to your site&apos;s <code>/public</code> folder.
-          </p>
         </div>
       </Section>
 
@@ -275,7 +262,8 @@ export default function App() {
       >
         <div className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 space-y-2">
           <p>
-            <strong>Annual tuition:</strong> <span className="font-semibold">$4,500 USD per child</span>.
+            <strong>Annual tuition:</strong>{" "}
+            <span className="font-semibold">$4,500 USD per child</span>.
           </p>
           <p>
             <strong>Enrollment deposit:</strong> $500 USD per child, paid after
@@ -294,7 +282,7 @@ export default function App() {
         </div>
       </Section>
 
-      {/* FAQ / APPLY REMINDER */}
+      {/* FAQ / APPLY INFO (NO EXTRA BUTTON) */}
       <Section
         id="faq"
         title="How to Apply"
@@ -303,9 +291,11 @@ export default function App() {
         <ol className="list-decimal list-inside text-sm text-slate-700 space-y-2 mb-4">
           <li>Review the overview, curriculum, and tuition information.</li>
           <li>
-            Click the{" "}
-            <span className="font-semibold">“Apply / Join Interest List”</span>{" "}
-            button in the navigation bar.
+            Use the{" "}
+            <span className="font-semibold">
+              “Apply / Join Interest List”
+            </span>{" "}
+            button in the top navigation bar.
           </li>
           <li>
             Complete the Google Form with your family details. You will receive
@@ -316,7 +306,6 @@ export default function App() {
             a parent conversation and placement discussion.
           </li>
         </ol>
-        <PrimaryButton href={APPLY_URL}>Apply / Join Interest List</PrimaryButton>
         <p className="mt-4 text-xs text-slate-500">
           Career inquiries/applications are accepted only through LinkedIn.
         </p>
@@ -334,7 +323,10 @@ export default function App() {
             Careers: Career inquiries/applications are accepted only through
             LinkedIn.
           </p>
-          <p>© {new Date().getFullYear()} Andalus International School of Qur&apos;an &amp; AI.</p>
+          <p>
+            © {new Date().getFullYear()} Andalus International School of Qur&apos;an
+            &amp; AI.
+          </p>
         </div>
       </footer>
     </main>
