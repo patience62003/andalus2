@@ -81,7 +81,7 @@ function Section({
 
 export default function App() {
   const APPLY_LINK =
-    "https://forms.gle/bt6Vuv3sEm4CkDAE7";
+    "https://docs.google.com/forms/d/e/1FAIpQLSd9j0FERdFhhw9Dfz26qJu1qypU521orgNrln49nkq9ZPhFlg/viewform?usp=sharing&ouid=104479175709144250534";
 
   const [showLeadModal, setShowLeadModal] = useState(false);
 
@@ -116,7 +116,6 @@ export default function App() {
             <a href="#tuition" className="px-3 py-1 rounded hover:bg-slate-100">
               Tuition
             </a>
-            {/* Removed the old text "Apply" link here */}
             <Button label="APPLY" href={APPLY_LINK} variant="secondary" />
           </div>
         </div>
@@ -316,6 +315,10 @@ export default function App() {
         <p className="mt-1">
           Curriculum: Qur&apos;an & Tafseer al-Qurtubi (Islamic core) · Cambridge Primary (English, Maths,
           Science, Global Perspectives, Computing).
+        </p>
+        <p className="mt-1">
+          Andalus International School of Qur&apos;an &amp; AI is an online school project of Muslim Lens
+          Institute, dedicated to Qur&apos;an-centric, Cambridge-rigorous Islamic education.
         </p>
       </footer>
 
