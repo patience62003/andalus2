@@ -132,6 +132,7 @@ export default function App() {
 
         <div className="mb-4">
           <Tag>Qur&apos;an &amp; Tafseer al-Qurtubi as the spine</Tag>
+          <Tag>AI-first STEM (Science, Technology, Engineering &amp; Mathematics)</Tag>
           <Tag>Cambridge Primary (Grades 1–5)</Tag>
           <Tag>Bilingual Arabic / English</Tag>
         </div>
@@ -140,10 +141,11 @@ export default function App() {
           For the inaugural year (August 2026), Andalus is accepting applications
           for <span className="font-semibold">Grades 1–5 only</span>. Pupils
           memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for
-          identity formation, and follow the Cambridge Primary pathway in English
-          for mathematics, science, computing, and global perspectives. AI is
-          used carefully to support practice and projects, while teachers remain
-          the murabbīn.
+          identity formation, and follow an{" "}
+          <span className="font-semibold">AI-first, Cambridge-aligned STEM pathway</span>{" "}
+          in English for mathematics, science, computing, and global perspectives.
+          AI is used carefully to support practice and projects, while teachers
+          remain the murabbīn.
         </p>
       </header>
 
@@ -179,9 +181,11 @@ export default function App() {
       <Section id="highlights" title="School Highlights">
         <ul className="grid gap-4 md:grid-cols-2 text-sm text-slate-700">
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            <strong>Integrated Islamic &amp; Cambridge curriculum.</strong>{" "}
-            Tafseer al-Qurtubi anchors Qur’an, fiqh, hadith and Arabic, while
-            Cambridge Primary structures the empirical subjects.
+            <strong>Qur’an-centric + AI-first STEM.</strong>{" "}
+            Tafseer al-Qurtubi anchors Qur’an, fiqh, hadith and Arabic, while a
+            Cambridge-aligned, AI-supported STEM sequence (English, maths,
+            science, computing, global perspectives) structures the empirical
+            subjects.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
             <strong>Small class sizes.</strong> Limited seats to protect quality
