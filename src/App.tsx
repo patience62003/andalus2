@@ -1,260 +1,292 @@
 import React, { useState } from "react";
 
 const APPLY_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSd9j0FERdFhhw9Dfz26qJu1qypU521orgNrln49nkq9ZPhFlg/viewform?usp=sharing";
+  "https://docs.google.com/forms/d/e/1FAIpQLSd9j0FERdFhhw9Dfz26qJu1qypU521orgNrln49nkq9ZPhFlg/viewform?usp=sharing&ouid=104479175709144250534";
 
-function Badge({ text }: { text: string }) {
+function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-semibold">
-      ● {text}
+    <span className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
+      ● {children}
     </span>
-  );
-}
-
-function Pill({ text }: { text: string }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-semibold">
-      ● {text}
-    </span>
-  );
-}
-
-function ButtonPrimary({
-  label,
-  href,
-}: {
-  label: string;
-  href: string;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700 transition-colors"
-    >
-      {label}
-    </a>
   );
 }
 
 function Section({
   id,
   title,
-  intro,
   children,
+  eyebrow,
 }: {
   id: string;
   title: string;
-  intro?: string;
+  eyebrow?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="max-w-6xl mx-auto px-6 py-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-        {title}
-      </h2>
-      {intro && (
-        <p className="text-sm md:text-base text-slate-700 mb-6">{intro}</p>
-      )}
-      {children}
+    <section id={id} className="scroll-mt-24 bg-slate-50">
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-0">
+        {eyebrow && (
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">
+            {eyebrow}
+          </p>
+        )}
+        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          {title}
+        </h2>
+        <div className="mt-4 text-sm text-slate-700">{children}</div>
+      </div>
     </section>
   );
 }
 
-function Card({
+function HighlightCard({
   title,
   children,
-  emoji,
 }: {
   title: string;
   children: React.ReactNode;
-  emoji?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
-      <div className="mb-2 flex items-center gap-2 text-slate-800">
-        {emoji && <span className="text-lg">{emoji}</span>}
-        <span className="text-sm font-semibold">{title}</span>
-      </div>
-      <div className="text-sm text-slate-700">{children}</div>
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <p className="mb-1 text-base font-semibold text-slate-900">{title}</p>
+      <p className="text-sm text-slate-700">{children}</p>
     </div>
   );
 }
 
+function ApplyButton({ className = "" }: { className?: string }) {
+  return (
+    <button
+      onClick={() => window.open(APPLY_URL, "_blank")}
+      className={
+        "inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 " +
+        className
+      }
+    >
+      Apply / Join Interest List
+    </button>
+  );
+}
+
 export default function App() {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: "overview", label: "Overview" },
+    { id: "highlights", label: "Highlights" },
+    { id: "curriculum", label: "Curriculum" },
+    { id: "tuition", label: "Tuition" },
+    { id: "faq", label: "FAQ" },
+  ];
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    setMenuOpen(false);
+  };
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-20 backdrop-blur bg-white/90 border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-          <a href="#top" className="font-extrabold tracking-tight text-slate-900">
-            Andalus
-          </a>
+      <nav className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-0">
           <button
-            className="md:hidden px-3 py-2 rounded border text-sm"
-            onClick={() => setOpen(!open)}
+            onClick={() => scrollTo("overview")}
+            className="text-base font-extrabold tracking-tight text-slate-900"
+          >
+            Andalus
+          </button>
+
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className="hover:text-slate-900 hover:underline"
+              >
+                {item.label}
+              </button>
+            ))}
+            <ApplyButton />
+          </div>
+
+          {/* Mobile nav toggle */}
+          <button
+            className="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 md:hidden"
+            onClick={() => setMenuOpen((v) => !v)}
           >
             Menu
           </button>
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#overview" className="hover:underline">
-              Overview
-            </a>
-            <a href="#highlights" className="hover:underline">
-              Highlights
-            </a>
-            <a href="#curriculum" className="hover:underline">
-              Curriculum
-            </a>
-            <a href="#tuition" className="hover:underline">
-              Tuition
-            </a>
-            <a href="#faq" className="hover:underline">
-              FAQ
-            </a>
-            <ButtonPrimary label="Apply / Join Interest List" href={APPLY_URL} />
-          </div>
         </div>
-        {open && (
-          <div className="md:hidden px-6 pb-4 flex flex-col gap-2 text-sm">
-            <a href="#overview" onClick={() => setOpen(false)}>
-              Overview
-            </a>
-            <a href="#highlights" onClick={() => setOpen(false)}>
-              Highlights
-            </a>
-            <a href="#curriculum" onClick={() => setOpen(false)}>
-              Curriculum
-            </a>
-            <a href="#tuition" onClick={() => setOpen(false)}>
-              Tuition
-            </a>
-            <a href="#faq" onClick={() => setOpen(false)}>
-              FAQ
-            </a>
-            <ButtonPrimary
-              label="Apply / Join Interest List"
-              href={APPLY_URL}
-            />
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="border-t border-slate-200 bg-white px-4 pb-4 pt-2 text-sm md:hidden">
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className="text-left text-slate-700 hover:text-slate-900"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <ApplyButton className="mt-2 w-full justify-center" />
+            </div>
           </div>
         )}
       </nav>
 
-      {/* HERO + BANNER */}
+      {/* HERO / OVERVIEW */}
       <section id="overview" className="bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 pt-10 pb-12">
-          {/* Banner image */}
-          <div className="rounded-3xl overflow-hidden mb-10">
-            <img
-              src="/andalus_banner.png"
-              alt="Andalus International School of Qur'an & AI – Qur'an-centric, Cambridge Primary, Online, Bilingual Arabic/English"
-              className="w-full rounded-3xl object-cover"
-            />
-          </div>
+        <div className="mx-auto max-w-5xl px-4 pb-10 pt-6 sm:px-6 lg:px-0">
+          {/* Banner */}
+          <img
+            src="/andalus_banner_clean.png"
+            alt="Andalus International School of Qur'an & AI banner"
+            className="mb-8 w-full rounded-3xl object-cover shadow-md"
+          />
 
-          <p className="text-xs tracking-wide text-emerald-700 font-semibold mb-2">
-            ONLINE BILINGUAL ISLAMIC SCHOOL · OPENING AUGUST 2026
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+            Online bilingual Islamic school · Opening August 2026
           </p>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Andalus International School of Qur&apos;an &amp; AI
           </h1>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Pill text="Qur'an & Tafseer al-Qurtubi as the spine" />
-            <Pill text="AI-first STEM (Science, Technology, Engineering & Mathematics)" />
-            <Pill text="Cambridge Primary (Grades 1–5)" />
-            <Pill text="Bilingual Arabic / English" />
+            <Pill>Qur&apos;an &amp; Tafseer al-Qurtubi as the spine</Pill>
+            <Pill>AI-first STEM (Science, Technology, Engineering &amp; Maths)</Pill>
+            <Pill>Cambridge Primary (Grades 1–5)</Pill>
+            <Pill>Bilingual Arabic / English</Pill>
           </div>
 
-          <p className="mt-5 max-w-3xl text-sm md:text-base text-slate-700">
-            For the inaugural year (August 2026), Andalus is accepting
-            applications for <span className="font-semibold">Grades 1–5 only</span>.
+          <p className="mt-5 text-sm leading-relaxed text-slate-700">
+            For the inaugural year (August 2026), Andalus is accepting applications
+            for <span className="font-semibold">Grades 1–5 only.</span> Andalus
+            is a Qur&apos;an-centric online school for practicing Muslim families.
             Pupils memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for
-            identity formation, and follow an{" "}
-            <span className="font-semibold">
-              AI-first, Cambridge-aligned STEM pathway
-            </span>{" "}
-            in English for mathematics, science, computing, and global
-            perspectives. AI is used carefully to support practice and projects,
-            while teachers remain the <em>murabbīn</em>.
+            identity formation, and follow the Cambridge-aligned{" "}
+            <span className="font-semibold">STEM pathway</span> in English for
+            mathematics, science, computing, and global perspectives. AI is used
+            carefully to support practice and projects, while teachers remain the
+            murabbīn.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <ButtonPrimary
-              label="Apply / Join Interest List"
-              href={APPLY_URL}
-            />
+          <div className="mt-6 flex flex-wrap gap-3">
+            <ApplyButton />
+            <button
+              onClick={() =>
+                scrollTo("tuition")
+              }
+              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
+            >
+              View Tuition &amp; Fees
+            </button>
           </div>
         </div>
       </section>
 
-      {/* WHY FAMILIES CHOOSE ANDALUS */}
+      {/* HIGHLIGHTS */}
       <Section
         id="highlights"
         title="Why Families Choose Andalus"
-        intro="A focused online environment designed for serious Muslim families who want Qur’an, character, and academic excellence together."
+        eyebrow="Highlights"
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card title="Qur'an-Centric Formation" emoji="📖">
-            Pupils complete a structured hifz program while reading and
-            discussing Tafseer al-Qurtubi in Arabic, connecting aqeedah, fiqh,
-            seerah, and akhlaq through one coherent spine.
-          </Card>
-          <Card title="AI-first STEM, Not Screens Only" emoji="🤖">
-            Cambridge Primary standards in English with strong emphasis on
-            mathematics, science, computing, and project-based learning. AI is
-            used as a tool, not a teacher.
-          </Card>
-          <Card title="Live Instruction & Curated Peers" emoji="🧑‍🏫">
-            Daily live instruction from qualified Cambridge subject teachers and
-            certified Islamic studies teachers. Peers are hand-selected to build
-            a well-mannered online learning community.
-          </Card>
-          <Card title="Small Classes & Clear Feedback" emoji="📊">
-            Small class sizes, regular feedback, assessments, and reporting for
-            families. College and career counseling begins early for long-term
-            planning.
-          </Card>
+        <p className="mb-4">
+          A focused online environment designed for serious Muslim families who
+          want Qur&apos;an, character, and academic excellence together.
+        </p>
+        <div className="grid gap-4 md:grid-cols-2">
+          <HighlightCard title="Live instruction from teachers">
+            Daily live sessions rather than self-paced videos.
+          </HighlightCard>
+          <HighlightCard title="Hand-picked peers">
+            Peers from around the world, providing well-mannered online
+            companionship in daily lessons.
+          </HighlightCard>
+          <HighlightCard title="Qualified Cambridge subject teachers">
+            Teachers for English, Mathematics, Science, Global Perspectives, and
+            Computing with Cambridge-aligned experience.
+          </HighlightCard>
+          <HighlightCard title="Certified Islamic studies teachers">
+            Qur&apos;an, Fiqh, Hadith, and Arabic teachers grounded in orthodox
+            Sunni scholarship.
+          </HighlightCard>
+          <HighlightCard title="Small class sizes">
+            Deliberate sectioning to preserve focus, akhlāq, and interaction.
+          </HighlightCard>
+          <HighlightCard title="Regular feedback, assessments, and reports">
+            Parents can see progress clearly across both Islamic and Cambridge
+            subjects.
+          </HighlightCard>
+          <HighlightCard title="College and career counseling">
+            As pupils grow, families receive guidance for IGCSE, A-Levels, and
+            beyond.
+          </HighlightCard>
         </div>
       </Section>
 
       {/* CURRICULUM */}
       <Section
         id="curriculum"
-        title="Curriculum Overview"
-        intro="Two tightly integrated halves: Qur’an/Qurtubi in Arabic (with humanities embedded) and Cambridge-aligned STEM in English."
+        title="Curriculum Overview (Grades 1–5)"
+        eyebrow="Curriculum"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          <Card title="Qur'an & Qurtubi Track" emoji="🕋">
-            Daily Qur’an class includes hifz, tajwīd, and tafseer using
-            al-Qurtubi as the central text. Fiqh (including uṣūl and qawāʿid),
-            ḥadīth (including uṣūl al-ḥadīth and rijāl), and adab are woven into
-            the tafseer sequence rather than taught as isolated subjects.
-          </Card>
-          <Card title="Cambridge STEM & Languages" emoji="🧬">
-            Cambridge Primary (Grades 1–5) in English language, mathematics,
-            science, and computing. English is taught to support STEM
-            comprehension. Arabic (fusha) is taught as a language of revelation
-            and scholarship.
-          </Card>
+          <div className="space-y-2">
+            <h3 className="text-sm font-semibold text-slate-900">
+              Islamic Core (in Arabic)
+            </h3>
+            <ul className="list-disc pl-5 text-sm">
+              <li>Qur&apos;an memorisation, tajwīd, and daily tilāwah</li>
+              <li>Tafseer al-Qurtubi as the spine across the school</li>
+              <li>
+                Fiqh (with uṣūl al-fiqh &amp; qawāʿid as age-appropriate)
+              </li>
+              <li>
+                Hadith (with basics of uṣūl al-ḥadīth &amp; rijāl as pupils
+                mature)
+              </li>
+              <li>
+                Arabic: reading, writing, and expression built around Qur&apos;an
+                and classical texts
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-sm font-semibold text-slate-900">
+              Cambridge Primary (STEM &amp; Humanities)
+            </h3>
+            <ul className="list-disc pl-5 text-sm">
+              <li>English (language, literature, and composition)</li>
+              <li>Mathematics (Cambridge Primary Maths)</li>
+              <li>Science (inquiry-based, lab-simulation rich)</li>
+              <li>Computing &amp; foundational coding</li>
+              <li>Global Perspectives &amp; project-based learning</li>
+            </ul>
+          </div>
         </div>
 
-        <div className="mt-8">
-          <h3 className="text-sm font-semibold text-slate-900 mb-2">
-            Download Curriculum Map
-          </h3>
-          <p className="text-sm text-slate-700 mb-3">
-            A detailed, grade-by-grade overview of Qur&apos;an/Qurtubi and
-            Cambridge Primary subjects (Grades 1–5).
+        <div className="mt-6">
+          <p className="mb-2 text-sm font-semibold text-slate-900">
+            Detailed curriculum map
+          </p>
+          <p className="mb-3 text-sm text-slate-700">
+            A full grade-by-grade map is available for parents who want to see
+            how Qur&apos;an, Arabic, Islamic studies, and Cambridge subjects fit
+            together.
           </p>
           <a
             href="/Curriculum_Maps_Andalus_Online_Cambridge_1-5_v3.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50"
+            className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
           >
             Download Curriculum Map (PDF)
           </a>
@@ -262,105 +294,118 @@ export default function App() {
       </Section>
 
       {/* TUITION */}
+      <Section id="tuition" title="Tuition &amp; Fees" eyebrow="Tuition">
+        <ul className="space-y-2 text-sm">
+          <li>
+            <span className="font-semibold">
+              Annual tuition per pupil (Grades 1–5):
+            </span>{" "}
+            4,500 USD.
+          </li>
+          <li>
+            Example payment plan: one payment of 4,500 USD, or 10 monthly
+            payments of 450 USD.
+          </li>
+          <li>
+            <span className="font-semibold">Refundable enrollment deposit:</span>{" "}
+            500 USD per pupil after a conditional offer is made, credited toward
+            tuition.
+          </li>
+          <li>
+            Deposit fully refundable until 30 days before term start; normally
+            non-refundable after that except documented hardship cases at the
+            school&apos;s discretion.
+          </li>
+          <li>
+            Tuition is all-inclusive for core learning: live classes, Islamic
+            studies, and online subscriptions to STEM and literacy apps used in
+            lessons.
+          </li>
+        </ul>
+      </Section>
+
+      {/* HOW TO APPLY / FAQ */}
       <Section
-        id="tuition"
-        title="Tuition & Fees"
-        intro="Simple, transparent fees for the inaugural cohort (Grades 1–5, online)."
+        id="faq"
+        title="How to Apply"
+        eyebrow="FAQ"
       >
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card title="Annual Tuition" emoji="💳">
-            <p className="text-sm text-slate-700">
-              Tuition is <span className="font-semibold">$4,500 USD per year</span>{" "}
-              per pupil. This includes:
-            </p>
-            <ul className="mt-2 list-disc list-inside text-sm text-slate-700 space-y-1">
-              <li>Daily live instruction in all subjects</li>
-              <li>Access to required online STEM apps and platforms</li>
-              <li>Learning management system and reporting</li>
-              <li>College/career counseling as pupils advance</li>
-            </ul>
-          </Card>
-          <Card title="Deposit & Schedule" emoji="📅">
-            <ul className="list-disc list-inside text-sm text-slate-700 space-y-1">
-              <li>
-                <span className="font-semibold">$500 USD deposit</span> due upon
-                acceptance. This reserves the seat and is applied toward annual
-                tuition.
-              </li>
-              <li>
-                Remaining tuition can be paid in instalments. Details are shared
-                with accepted families.
-              </li>
-              <li>
-                Tuition is the same for Grades 1–5 for the inaugural year
-                (August 2026 start).
-              </li>
-            </ul>
-          </Card>
-        </div>
-        <div className="mt-6">
-          <ButtonPrimary
-            label="Apply / Join Interest List"
-            href={APPLY_URL}
-          />
+        <ol className="space-y-2 text-sm">
+          <li>
+            <span className="font-semibold">1.</span> Fill out the online
+            application / interest form (one per family). Provide basic details:
+            parent contact, child&apos;s age, requested grade, location, and
+            Qur&apos;an background.
+          </li>
+          <li>
+            <span className="font-semibold">2.</span> If there is a potential
+            fit, the school will invite you to a short online info call and a
+            simple placement check.
+          </li>
+          <li>
+            <span className="font-semibold">3.</span> If an offer is made and
+            you wish to accept, you will be asked to pay the refundable
+            enrollment deposit (500 USD) to secure the place.
+          </li>
+        </ol>
+
+        <div className="mt-5">
+          <ApplyButton />
         </div>
       </Section>
 
-      {/* FAQ */}
-      <Section id="faq" title="FAQ">
-        <div className="space-y-4 text-sm text-slate-700">
-          <div>
-            <h3 className="font-semibold text-slate-900">
-              Where are classes based?
-            </h3>
-            <p>
-              Andalus is a fully online school serving practicing Muslim families
-              globally. Live classes are scheduled with consideration for time
-              zones where most families enroll.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-900">
-              How do families apply?
-            </h3>
-            <p>
-              Families complete the online interest/application form via the
-              &quot;Apply / Join Interest List&quot; button. Accepted families
-              then receive enrollment and payment instructions.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-900">
-              How do teachers apply to work at Andalus?
-            </h3>
-            <p>
-              Career inquiries/applications are accepted only through LinkedIn.
-              Please search for Andalus International School of Qur&apos;an &amp;
-              AI on LinkedIn and apply to the relevant posting.
-            </p>
-          </div>
-        </div>
-      </Section>
+      {/* CONTACT + FOOTER */}
+      <section className="bg-slate-50 pb-12 pt-4">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-0">
+          <h2 className="text-xl font-extrabold tracking-tight text-slate-900">
+            Contact
+          </h2>
+          <p className="mt-2 text-sm text-slate-700">
+            For questions about admissions, teaching roles, or partnerships.
+          </p>
 
-      {/* FOOTER */}
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-8 text-xs text-slate-600 space-y-2">
-          <p>
-            Andalus International School of Qur&apos;an &amp; AI is an online
-            school project of <span className="font-semibold">Muslim Lens Institute</span>,
-            dedicated to Qur&apos;an-centric, Cambridge-rigorous Islamic
-            education.
-          </p>
-          <p>
-            For admissions questions, please use the Apply / Join Interest List
-            form. For general inquiries: muslimlensinstitute@consultant.com
-          </p>
-          <p className="text-[11px] text-slate-500">
-            © {new Date().getFullYear()} Andalus International School of Qur&apos;an
-            &amp; AI. All rights reserved.
-          </p>
+          <div className="mt-4 space-y-2 text-sm text-slate-700">
+            <p>
+              ✉️ Email:{" "}
+              <a
+                href="mailto:muslimlensinstitute@consultant.com"
+                className="font-semibold text-emerald-700 hover:underline"
+              >
+                muslimlensinstitute@consultant.com
+              </a>
+            </p>
+            <p>
+              🌐{" "}
+              <span className="font-semibold">
+                Career inquiries / applications are accepted only through
+                LinkedIn.
+              </span>
+            </p>
+            <p>
+              If you email, please include your name, country, child&apos;s
+              current or intended grade, and whether you are asking as a parent,
+              teacher, or partner.
+            </p>
+          </div>
+
+          <div className="mt-8 border-t border-slate-200 pt-4 text-xs text-slate-600">
+            <p>
+              Andalus International School of Qur&apos;an &amp; AI – Online,
+              Grades 1–5 (opening August 2026).
+            </p>
+            <p className="mt-1">
+              Curriculum: Qur&apos;an &amp; Tafseer al-Qurtubi (Islamic core) ·
+              Cambridge Primary (English, Maths, Science, Global Perspectives,
+              Computing).
+            </p>
+            <p className="mt-1">
+              Andalus International School of Qur&apos;an &amp; AI is an online
+              school project of Muslim Lens Institute, dedicated to
+              Qur&apos;an-centric, Cambridge-rigorous Islamic education.
+            </p>
+          </div>
         </div>
-      </footer>
+      </section>
     </main>
   );
 }
