@@ -96,14 +96,17 @@ export default function App() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900" id="top">
+    <main
+      className="min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden"
+      id="top"
+    >
       {/* Sticky top nav */}
       <nav className="sticky top-0 z-20 backdrop-blur bg-white/90 border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           <a href="#top" className="font-extrabold tracking-tight text-slate-900">
             Andalus
           </a>
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
             <a href="#overview" className="px-3 py-1 rounded hover:bg-slate-100">
               Overview
             </a>
@@ -139,15 +142,19 @@ export default function App() {
           <span className="underline">Grades 1–5 only</span>.
         </p>
         <p className="mt-4 max-w-3xl text-slate-700 text-sm md:text-base">
-          Andalus is a Qur&apos;an-centric online school for practicing Muslim families. Pupils memorise
-          the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for identity formation, and follow the
-          Cambridge Primary pathway in English for mathematics, science, computing, and global
-          perspectives. AI is used carefully to support practice and projects, while teachers remain
-          the murabbīn.
+          Andalus is a Qur&apos;an-centric online school for practicing Muslim families. Pupils
+          memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for identity formation, and
+          follow the Cambridge Primary pathway in English for mathematics, science, computing,
+          and global perspectives. AI is used carefully to support practice and projects, while
+          teachers remain the murabbīn.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Button label="Apply / Join Interest List" href={APPLY_LINK} variant="secondary" />
+          <Button
+            label="Apply / Join Interest List"
+            href={APPLY_LINK}
+            variant="secondary"
+          />
           <Button
             label="Tuition & Fees (PDF)"
             href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
@@ -164,30 +171,32 @@ export default function App() {
       >
         <ul className="grid gap-3 md:grid-cols-2 text-sm text-slate-700">
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>Live instruction from teachers</b> – daily live sessions rather than self-paced videos.
+            ✅ <b>Live instruction from teachers</b> – daily live sessions rather than self-paced
+            videos.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>Hand-picked peers</b> from around the world, providing well-mannered online companionship
-            in daily lessons.
+            ✅ <b>Hand-picked peers</b> from around the world, providing well-mannered online
+            companionship in daily lessons.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>Qualified Cambridge subject teachers</b> for English, Mathematics, Science, Global
-            Perspectives, and Computing.
+            ✅ <b>Qualified Cambridge subject teachers</b> for English, Mathematics, Science,
+            Global Perspectives, and Computing.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>Certified Islamic studies teachers</b> (Qur&apos;an, Fiqh, Hadith, Arabic) grounded in
-            orthodox Sunni scholarship.
+            ✅ <b>Certified Islamic studies teachers</b> (Qur&apos;an, Fiqh, Hadith, Arabic) grounded
+            in orthodox Sunni scholarship.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>Small class sizes</b> with deliberate sectioning to preserve focus, akhlāq, and interaction.
+            ✅ <b>Small class sizes</b> with deliberate sectioning to preserve focus, akhlāq, and
+            interaction.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>Regular feedback, assessments, and reports</b> so parents can see progress clearly across
-            both Islamic and Cambridge subjects.
+            ✅ <b>Regular feedback, assessments, and reports</b> so parents can see progress
+            clearly across both Islamic and Cambridge subjects.
           </li>
           <li className="rounded-xl border border-slate-200 bg-white p-4">
-            ✅ <b>College and career counseling</b> as pupils grow, helping families plan pathways through
-            IGCSE, A-Levels, and beyond.
+            ✅ <b>College and career counseling</b> as pupils grow, helping families plan
+            pathways through IGCSE, A-Levels, and beyond.
           </li>
         </ul>
       </Section>
@@ -205,16 +214,17 @@ export default function App() {
             Sīrah and adab are woven into these subjects rather than taught separately.
           </Card>
           <Card title="Cambridge Primary Core" emoji="🔬">
-            Cambridge Primary English, Mathematics, Science, Global Perspectives, and Computing,
-            preparing pupils for later Cambridge assessments.
+            Cambridge Primary English, Mathematics, Science, Global Perspectives, and
+            Computing, preparing pupils for later Cambridge assessments.
           </Card>
           <Card title="Language Development" emoji="💬">
-            Arabic (fuṣḥā) for Qur&apos;an and Islamic texts; English for reading, writing, and discussion in
-            Cambridge classes. Support for pupils entering with different backgrounds.
+            Arabic (fuṣḥā) for Qur&apos;an and Islamic texts; English for reading, writing, and
+            discussion in Cambridge classes. Support for pupils entering with different
+            backgrounds.
           </Card>
           <Card title="AI in Practice" emoji="🤖">
-            AI tools are used to visualise concepts, give feedback, and support projects — always under
-            teacher supervision and within clear Islamic ethical boundaries.
+            AI tools are used to visualise concepts, give feedback, and support projects — always
+            under teacher supervision and within clear Islamic ethical boundaries.
           </Card>
         </div>
 
@@ -238,15 +248,16 @@ export default function App() {
           </li>
           <li>• Same tuition for each grade level in Year 1.</li>
           <li>
-            • Example payment plan: one payment of 4,500 USD, or 10 monthly payments of 450 USD.
+            • Example payment plan: one payment of 4,500 USD, or 10 monthly payments of 450
+            USD.
           </li>
           <li>
             • <b>Refundable enrollment deposit:</b> 500 USD per pupil after a conditional offer is
             made. Credited towards tuition.
           </li>
           <li>
-            • Deposit fully refundable until 30 days before term start; normally non-refundable after
-            that except documented hardship cases at the school&apos;s discretion.
+            • Deposit fully refundable until 30 days before term start; normally non-refundable
+            after that except documented hardship cases at the school&apos;s discretion.
           </li>
           <li>
             • Tuition is all-inclusive for core learning: live classes, Islamic studies, and online
@@ -271,20 +282,25 @@ export default function App() {
       >
         <ol className="list-decimal list-inside text-sm text-slate-700 space-y-2">
           <li>
-            Fill out the online application / interest form (one per family). Provide basic details:
-            parent contact, child&apos;s age, requested grade, location, and Qur&apos;an background.
+            Fill out the online application / interest form (one per family). Provide basic
+            details: parent contact, child&apos;s age, requested grade, location, and Qur&apos;an
+            background.
           </li>
           <li>
             If there is a potential fit, the school will invite you to a short online info call and a
             simple placement check.
           </li>
           <li>
-            If an offer is made and you wish to accept, you will be asked to pay the refundable
-            enrollment deposit (500 USD) to secure the place.
+            If an offer is made and you wish to accept, you will be asked to pay the
+            refundable enrollment deposit (500 USD) to secure the place.
           </li>
         </ol>
         <div className="mt-5 flex flex-wrap gap-3">
-          <Button label="Apply / Join Interest List" href={APPLY_LINK} variant="secondary" />
+          <Button
+            label="Apply / Join Interest List"
+            href={APPLY_LINK}
+            variant="secondary"
+          />
           <Button
             label="Download Tuition & Fees"
             href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
@@ -301,24 +317,28 @@ export default function App() {
       >
         <div className="space-y-2 text-sm text-slate-700">
           <p>📧 Email: muslimlensinstitute@consultant.com</p>
-          <p>🌐 Applications are accepted only through LinkedIn and the online apply form.</p>
+          <p>🌐 Career inquiries / applications are accepted only through LinkedIn.</p>
           <p>
-            If you email, please include your name, country, child&apos;s current or intended grade, and
-            whether you are asking as a parent, teacher, or partner.
+            If you email, please include your name, country, child&apos;s current or intended
+            grade, and whether you are asking as a parent, teacher, or partner.
           </p>
         </div>
       </Section>
 
       {/* FOOTER */}
       <footer className="max-w-5xl mx-auto px-6 py-10 text-xs text-slate-500">
-        <p>Andalus International School of Qur&apos;an &amp; AI – Online, Grades 1–5 (opening August 2026).</p>
-        <p className="mt-1">
-          Curriculum: Qur&apos;an & Tafseer al-Qurtubi (Islamic core) · Cambridge Primary (English, Maths,
-          Science, Global Perspectives, Computing).
+        <p>
+          Andalus International School of Qur&apos;an &amp; AI – Online, Grades 1–5 (opening
+          August 2026).
         </p>
         <p className="mt-1">
-          Andalus International School of Qur&apos;an &amp; AI is an online school project of Muslim Lens
-          Institute, dedicated to Qur&apos;an-centric, Cambridge-rigorous Islamic education.
+          Curriculum: Qur&apos;an & Tafseer al-Qurtubi (Islamic core) · Cambridge Primary
+          (English, Maths, Science, Global Perspectives, Computing).
+        </p>
+        <p className="mt-1">
+          Andalus International School of Qur&apos;an &amp; AI is an online school project of
+          Muslim Lens Institute, dedicated to Qur&apos;an-centric, Cambridge-rigorous Islamic
+          education.
         </p>
       </footer>
 
@@ -330,9 +350,10 @@ export default function App() {
               Get updates about Andalus (Grades 1–5)
             </h3>
             <p className="text-sm text-slate-700 mb-4">
-              Andalus International School of Qur&apos;an &amp; AI is planning to open its online primary
-              programme in August 2026, in shā&apos; Allāh. If you would like to receive updates and
-              admissions information, please fill out our short application / interest form.
+              Andalus International School of Qur&apos;an &amp; AI is planning to open its online
+              primary programme in August 2026, in shā&apos; Allāh. If you would like to receive
+              updates and admissions information, please fill out our short application / interest
+              form.
             </p>
             <div className="flex flex-wrap gap-3 mt-2">
               <Button
