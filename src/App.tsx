@@ -79,14 +79,9 @@ export default function App() {
       <nav className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            {/* LOGO IMAGE */}
-            <img
-              src="/andalus_logo_en_300.png"
-              alt="Andalus International School of Qur'an & AI logo"
-              className="h-9 w-auto"
-            />
-            <span className="sr-only">
-              Andalus International School of Qur&apos;an &amp; AI
+            {/* Text brand in nav */}
+            <span className="text-base md:text-lg font-extrabold tracking-tight text-slate-900">
+              Andalus
             </span>
           </div>
 
@@ -129,6 +124,13 @@ export default function App() {
 
       {/* HERO */}
       <header className="mx-auto max-w-5xl px-4 py-10">
+        {/* BANNER IMAGE */}
+        <img
+          src="/andalus_cover_en_1128x220.jpg"
+          alt="Andalus International School of Qur'an & AI banner"
+          className="w-full rounded-xl mb-6"
+        />
+
         <p className="text-xs font-semibold tracking-wide text-emerald-700 mb-1">
           ONLINE BILINGUAL ISLAMIC SCHOOL · OPENING AUGUST 2026
         </p>
@@ -268,7 +270,7 @@ export default function App() {
         </div>
       </Section>
 
-      {/* TUITION – ONLY MENTION OF TUITION */}
+      {/* TUITION */}
       <Section
         id="tuition"
         title="Tuition &amp; Fees"
@@ -296,7 +298,7 @@ export default function App() {
         </div>
       </Section>
 
-      {/* FAQ / APPLY INFO (NO EXTRA BUTTON) */}
+      {/* FAQ / APPLY INFO */}
       <Section
         id="faq"
         title="How to Apply"
