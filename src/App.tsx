@@ -79,8 +79,14 @@ export default function App() {
       <nav className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <span className="text-base md:text-lg font-extrabold tracking-tight text-slate-900">
-              Andalus
+            {/* LOGO IMAGE */}
+            <img
+              src="/andalus_logo_en_300.png"
+              alt="Andalus International School of Qur'an & AI logo"
+              className="h-9 w-auto"
+            />
+            <span className="sr-only">
+              Andalus International School of Qur&apos;an &amp; AI
             </span>
           </div>
 
@@ -132,7 +138,9 @@ export default function App() {
 
         <div className="mb-4">
           <Tag>Qur&apos;an &amp; Tafseer al-Qurtubi as the spine</Tag>
-          <Tag>AI-first STEM (Science, Technology, Engineering &amp; Mathematics)</Tag>
+          <Tag>
+            AI-first STEM (Science, Technology, Engineering &amp; Mathematics)
+          </Tag>
           <Tag>Cambridge Primary (Grades 1–5)</Tag>
           <Tag>Bilingual Arabic / English</Tag>
         </div>
@@ -142,10 +150,12 @@ export default function App() {
           for <span className="font-semibold">Grades 1–5 only</span>. Pupils
           memorise the Qur&apos;an, study Tafseer al-Qurtubi in Arabic for
           identity formation, and follow an{" "}
-          <span className="font-semibold">AI-first, Cambridge-aligned STEM pathway</span>{" "}
-          in English for mathematics, science, computing, and global perspectives.
-          AI is used carefully to support practice and projects, while teachers
-          remain the murabbīn.
+          <span className="font-semibold">
+            AI-first, Cambridge-aligned STEM pathway
+          </span>{" "}
+          in English for mathematics, science, computing, and global
+          perspectives. AI is used carefully to support practice and projects,
+          while teachers remain the murabbīn.
         </p>
       </header>
 
