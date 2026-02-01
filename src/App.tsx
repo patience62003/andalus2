@@ -7,9 +7,9 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       {/* Sticky Nav */}
-      <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-          <a href="#top" className="flex items-center gap-3">
+      <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <a href="#overview" className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-xl bg-slate-900" aria-hidden />
             <div className="leading-tight">
               <div className="text-sm font-semibold">
@@ -36,7 +36,7 @@ export default function App() {
             </a>
           </nav>
 
-          {/* Only one Apply button */}
+          {/* Only ONE Apply button on the entire site */}
           <a
             href={APPLY_URL}
             target="_blank"
@@ -48,149 +48,10 @@ export default function App() {
         </div>
       </header>
 
-      <main id="top">
-        {/* Simple, single-column hero */}
-        <section id="overview" className="border-b">
-          <div className="mx-auto max-w-5xl px-4 py-12">
-            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Andalus International School of Qur&apos;an &amp; AI
-            </h1>
-
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700">
-              A 100% online, live, synchronous school for serious practicing Muslim
-              families globally. Launching August 2026 with Grades 1 to 5.
-            </p>
-
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-700">
-              Qur&apos;an-centric Islamic formation anchored in Tafseer al-Qurtubi, with a
-              Cambridge-aligned STEM pathway in English. Teachers remain the murabbīn.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href={APPLY_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-              >
-                Apply / Join Interest List
-              </a>
-
-              <a
-                href="#downloads"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold hover:bg-slate-50"
-              >
-                View Downloads
-              </a>
-            </div>
-
-            <p className="mt-6 text-xs text-slate-500">
-              Andalus International School of Qur&apos;an &amp; AI is an online school project
-              of Muslim Lens Institute, dedicated to Qur&apos;an-centric, Cambridge-rigorous
-              Islamic education.
-            </p>
-          </div>
-        </section>
-
-        {/* Highlights (kept lightweight) */}
-        <section id="highlights" className="border-b">
-          <div className="mx-auto max-w-5xl px-4 py-12">
-            <h2 className="text-2xl font-bold">Highlights</h2>
-
-            <ul className="mt-5 space-y-3 text-sm text-slate-700">
-              <li>Live instruction from teachers (not self-paced videos)</li>
-              <li>Small class sizes with regular feedback and reports</li>
-              <li>Cambridge-aligned STEM track taught in English</li>
-              <li>Orthodox Sunni formation grounded in Qur&apos;an-centric learning</li>
-              <li>Well-mannered online companionship with hand-picked peers</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* FAQ (short) */}
-        <section id="faq" className="border-b">
-          <div className="mx-auto max-w-5xl px-4 py-12">
-            <h2 className="text-2xl font-bold">FAQ</h2>
-
-            <div className="mt-6 space-y-4">
-              <div className="rounded-2xl border bg-white p-6 shadow-sm">
-                <div className="text-sm font-semibold">Is this self-paced?</div>
-                <p className="mt-2 text-sm text-slate-700">
-                  No. Andalus is live, synchronous instruction with guided practice built into lessons.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border bg-white p-6 shadow-sm">
-                <div className="text-sm font-semibold">How do we apply?</div>
-                <p className="mt-2 text-sm text-slate-700">
-                  Use the Apply / Join Interest List button. It opens a Google Form in a new tab.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border bg-white p-6 shadow-sm">
-                <div className="text-sm font-semibold">Questions?</div>
-                <p className="mt-2 text-sm text-slate-700">
-                  Email muslimlensinstitute@consultant.com. Applications are collected via the Google Form.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Links/Downloads at the bottom */}
-        <section id="downloads">
-          <div className="mx-auto max-w-5xl px-4 py-12">
-            <h2 className="text-2xl font-bold">Downloads</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-700">
-              Public documents for families.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="/Curriculum_Maps_Andalus_Online_Cambridge_1-5_v3.pdf"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold hover:bg-slate-50"
-              >
-                Curriculum Map (PDF)
-              </a>
-
-              <a
-                href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold hover:bg-slate-50"
-              >
-                Tuition &amp; Fees (PDF)
-              </a>
-
-              <a
-                href="/Academic_Calendar_Andalus_Online_2026-2027.pdf"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold hover:bg-slate-50"
-              >
-                Academic Calendar (PDF)
-              </a>
-
-              <a
-                href="/Student_Handbook_Andalus_Online_Y1.pdf"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold hover:bg-slate-50"
-              >
-                Student Handbook (PDF)
-              </a>
-
-              <a
-                href={APPLY_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-              >
-                Apply / Join Interest List
-              </a>
-            </div>
-
-            <footer className="mt-10 border-t pt-6 text-xs text-slate-500">
-              Andalus International School of Qur&apos;an &amp; AI is an online school project of Muslim Lens Institute,
-              dedicated to Qur&apos;an-centric, Cambridge-rigorous Islamic education.
-            </footer>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
+      {/* HERO with color + banner feel (single-column) */}
+      <section id="overview" className="border-b">
+        {/* Colored background */}
+        <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-white">
+          <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
+            {/* Banner card */}
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-sm">
