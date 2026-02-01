@@ -181,9 +181,7 @@ export default function App() {
           <div className="mt-6 flex flex-wrap gap-3">
             <ApplyButton />
             <button
-              onClick={() =>
-                scrollTo("tuition")
-              }
+              onClick={() => scrollTo("tuition")}
               className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
             >
               View Tuition &amp; Fees
@@ -322,14 +320,22 @@ export default function App() {
             lessons.
           </li>
         </ul>
+
+        {/* ADDED: Tuition PDF download link (new PDF file) */}
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a
+            href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
+          >
+            Download Tuition &amp; Fees (PDF)
+          </a>
+        </div>
       </Section>
 
       {/* HOW TO APPLY / FAQ */}
-      <Section
-        id="faq"
-        title="How to Apply"
-        eyebrow="FAQ"
-      >
+      <Section id="faq" title="How to Apply" eyebrow="FAQ">
         <ol className="space-y-2 text-sm">
           <li>
             <span className="font-semibold">1.</span> Fill out the online
@@ -386,6 +392,27 @@ export default function App() {
               current or intended grade, and whether you are asking as a parent,
               teacher, or partner.
             </p>
+          </div>
+
+          {/* ADDED: Links to new public PDFs */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="/Academic_Calendar_Andalus_Online_2026-2027.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
+            >
+              Academic Calendar (PDF)
+            </a>
+
+            <a
+              href="/Student_Handbook_Andalus_Online_Y1.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
+            >
+              Student Handbook (PDF)
+            </a>
           </div>
 
           <div className="mt-8 border-t border-slate-200 pt-4 text-xs text-slate-600">
