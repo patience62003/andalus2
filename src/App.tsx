@@ -68,6 +68,25 @@ function ApplyButton({ className = "" }: { className?: string }) {
   );
 }
 
+function DownloadButton({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -75,7 +94,6 @@ export default function App() {
     { id: "overview", label: "Overview" },
     { id: "highlights", label: "Highlights" },
     { id: "curriculum", label: "Curriculum" },
-    { id: "tuition", label: "Tuition" },
     { id: "faq", label: "FAQ" },
   ];
 
@@ -180,12 +198,6 @@ export default function App() {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <ApplyButton />
-            <button
-              onClick={() => scrollTo("tuition")}
-              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
-            >
-              View Tuition &amp; Fees
-            </button>
           </div>
         </div>
       </section>
@@ -244,9 +256,7 @@ export default function App() {
             <ul className="list-disc pl-5 text-sm">
               <li>Qur&apos;an memorisation, tajwīd, and daily tilāwah</li>
               <li>Tafseer al-Qurtubi as the spine across the school</li>
-              <li>
-                Fiqh (with uṣūl al-fiqh &amp; qawāʿid as age-appropriate)
-              </li>
+              <li>Fiqh (with uṣūl al-fiqh &amp; qawāʿid as age-appropriate)</li>
               <li>
                 Hadith (with basics of uṣūl al-ḥadīth &amp; rijāl as pupils
                 mature)
@@ -280,57 +290,9 @@ export default function App() {
             how Qur&apos;an, Arabic, Islamic studies, and Cambridge subjects fit
             together.
           </p>
-          <a
-            href="/Curriculum_Maps_Andalus_Online_Cambridge_1-5_v3.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
-          >
+          <DownloadButton href="/Curriculum_Maps_Andalus_Online_Cambridge_1-5_v3.pdf">
             Download Curriculum Map (PDF)
-          </a>
-        </div>
-      </Section>
-
-      {/* TUITION */}
-      <Section id="tuition" title="Tuition &amp; Fees" eyebrow="Tuition">
-        <ul className="space-y-2 text-sm">
-          <li>
-            <span className="font-semibold">
-              Annual tuition per pupil (Grades 1–5):
-            </span>{" "}
-            4,500 USD.
-          </li>
-          <li>
-            Example payment plan: one payment of 4,500 USD, or 10 monthly
-            payments of 450 USD.
-          </li>
-          <li>
-            <span className="font-semibold">Refundable enrollment deposit:</span>{" "}
-            500 USD per pupil after a conditional offer is made, credited toward
-            tuition.
-          </li>
-          <li>
-            Deposit fully refundable until 30 days before term start; normally
-            non-refundable after that except documented hardship cases at the
-            school&apos;s discretion.
-          </li>
-          <li>
-            Tuition is all-inclusive for core learning: live classes, Islamic
-            studies, and online subscriptions to STEM and literacy apps used in
-            lessons.
-          </li>
-        </ul>
-
-        {/* ADDED: Tuition PDF download link (new PDF file) */}
-        <div className="mt-5 flex flex-wrap gap-3">
-          <a
-            href="/Tuition_and_Fees_Andalus_Online_Y1.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
-          >
-            Download Tuition &amp; Fees (PDF)
-          </a>
+          </DownloadButton>
         </div>
       </Section>
 
@@ -350,8 +312,8 @@ export default function App() {
           </li>
           <li>
             <span className="font-semibold">3.</span> If an offer is made and
-            you wish to accept, you will be asked to pay the refundable
-            enrollment deposit (500 USD) to secure the place.
+            you wish to accept, you will be asked to follow the admissions steps
+            provided by the school.
           </li>
         </ol>
 
@@ -360,59 +322,25 @@ export default function App() {
         </div>
       </Section>
 
-      {/* CONTACT + FOOTER */}
+      {/* FOOTER (downloads at the very bottom) */}
       <section className="bg-slate-50 pb-12 pt-4">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-0">
-          <h2 className="text-xl font-extrabold tracking-tight text-slate-900">
-            Contact
-          </h2>
-          <p className="mt-2 text-sm text-slate-700">
-            For questions about admissions, teaching roles, or partnerships.
-          </p>
-
-          <div className="mt-4 space-y-2 text-sm text-slate-700">
-            <p>
-              ✉️ Email:{" "}
-              <a
-                href="mailto:muslimlensinstitute@consultant.com"
-                className="font-semibold text-emerald-700 hover:underline"
-              >
-                muslimlensinstitute@consultant.com
-              </a>
-            </p>
-            <p>
-              🌐{" "}
-              <span className="font-semibold">
-                Career inquiries / applications are accepted only through
-                LinkedIn.
-              </span>
-            </p>
-            <p>
-              If you email, please include your name, country, child&apos;s
-              current or intended grade, and whether you are asking as a parent,
-              teacher, or partner.
-            </p>
-          </div>
-
-          {/* ADDED: Links to new public PDFs */}
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="/Academic_Calendar_Andalus_Online_2026-2027.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
-            >
-              Academic Calendar (PDF)
-            </a>
-
-            <a
-              href="/Student_Handbook_Andalus_Online_Y1.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-100"
-            >
-              Student Handbook (PDF)
-            </a>
+          <div className="mt-6 border-t border-slate-200 pt-6">
+            <p className="text-sm font-semibold text-slate-900">Downloads</p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <DownloadButton href="/Curriculum_Maps_Andalus_Online_Cambridge_1-5_v3.pdf">
+                Curriculum Map (PDF)
+              </DownloadButton>
+              <DownloadButton href="/Academic_Calendar_Andalus_Online_2026-2027.pdf">
+                Academic Calendar (PDF)
+              </DownloadButton>
+              <DownloadButton href="/Student_Handbook_Andalus_Online_Y1.pdf">
+                Student Handbook (PDF)
+              </DownloadButton>
+              <DownloadButton href="/Tuition_and_Fees_Andalus_Online_Y1.pdf">
+                Tuition &amp; Fees (PDF)
+              </DownloadButton>
+            </div>
           </div>
 
           <div className="mt-8 border-t border-slate-200 pt-4 text-xs text-slate-600">
@@ -429,6 +357,16 @@ export default function App() {
               Andalus International School of Qur&apos;an &amp; AI is an online
               school project of Muslim Lens Institute, dedicated to
               Qur&apos;an-centric, Cambridge-rigorous Islamic education.
+            </p>
+            <p className="mt-2">
+              Email:{" "}
+              <a
+                href="mailto:muslimlensinstitute@consultant.com"
+                className="font-semibold text-emerald-700 hover:underline"
+              >
+                muslimlensinstitute@consultant.com
+              </a>{" "}
+              · Career inquiries/applications are accepted only through LinkedIn.
             </p>
           </div>
         </div>
