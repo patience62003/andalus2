@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       {/* Sticky Nav */}
-      <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <a href="#overview" className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-xl bg-slate-900" aria-hidden />
@@ -16,7 +16,7 @@ export default function App() {
                 Andalus International School of Qur&apos;an &amp; AI
               </div>
               <div className="text-xs text-slate-600">
-                Qur&apos;an-centric · Cambridge Primary · Online
+                Qur&apos;an-centric, Cambridge-rigorous, Online
               </div>
             </div>
           </a>
@@ -28,15 +28,20 @@ export default function App() {
             <a className="hover:text-slate-700" href="#highlights">
               Highlights
             </a>
-            <a className="hover:text-slate-700" href="#faq">
-              FAQ
+            <a className="hover:text-slate-700" href="#curriculum">
+              Curriculum
+            </a>
+            <a className="hover:text-slate-700" href="#tuition">
+              Tuition
             </a>
             <a className="hover:text-slate-700" href="#downloads">
               Downloads
             </a>
+            <a className="hover:text-slate-700" href="#faq">
+              FAQ
+            </a>
           </nav>
 
-          {/* Only ONE Apply button on the entire site */}
           <a
             href={APPLY_URL}
             target="_blank"
@@ -48,10 +53,22 @@ export default function App() {
         </div>
       </header>
 
-      {/* HERO with color + banner feel (single-column) */}
+      {/* Hero */}
       <section id="overview" className="border-b">
-        {/* Colored background */}
-        <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-white">
-          <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-            {/* Banner card */}
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-sm">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-2 md:py-16">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+              Qur&apos;an-centric. Cambridge-rigorous. AI-informed.
+            </h1>
+
+            <p className="mt-4 text-base leading-relaxed text-slate-700">
+              Andalus International School of Qur&apos;an &amp; AI is a 100% online, live,
+              synchronous school project for serious practicing Muslim families globally.
+              We open in <span className="font-semibold">August 2026</span> with
+              <span className="font-semibold"> Grades 1 to 5</span>.
+            </p>
+
+            <p className="mt-4 text-base leading-relaxed text-slate-700">
+              The program unites Qur&apos;an-centric Islamic formation anchored in
+              <span className="font-semibold"> Tafseer al-Qurtubi</span> with a Cambridge-aligned STEM pathway in English.
+              Teachers remain the murabbīn. AI supports practice an
