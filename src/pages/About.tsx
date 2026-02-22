@@ -99,7 +99,7 @@ export default function About() {
           <p className="text-sm font-semibold text-slate-900">
             Our founder is a career educator, not a business world implant. See what his Muslim and non-Muslim students have said about his
             teaching—from his training of undergraduate student-teachers at the University of Georgia, to his years teaching at Tier 1 Public
-            Schools in the U.S., to his work with Dr. Bilal Philips&apos; International Online University (where his course and book are still
+            Schools in the U.S., to his work with Dr. Bilal Philips&apos; International Open University (where his course and book are still
             taught).
           </p>
 
@@ -118,16 +118,12 @@ export default function About() {
 
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
               “He demonstrates mastery of his subject matter and breaks difficult concepts into simple chunks.”
-              <div className="mt-2 text-xs font-semibold text-slate-600">
-                International Online University learner feedback
-              </div>
+              <div className="mt-2 text-xs font-semibold text-slate-600">International Open University learner feedback</div>
             </blockquote>
 
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
               “The instructor was a very lively person… I genuinely enjoyed his classes… he worked best for me, mashaa Allah.”
-              <div className="mt-2 text-xs font-semibold text-slate-600">
-                International Online University learner feedback
-              </div>
+              <div className="mt-2 text-xs font-semibold text-slate-600">International Open University learner feedback</div>
             </blockquote>
 
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
