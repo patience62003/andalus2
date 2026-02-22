@@ -94,19 +94,13 @@ export default function About() {
           </div>
         </div>
 
-        {/* Testimonials block (your requested intro + selected quotes) */}
+        {/* Testimonials block */}
         <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <p className="text-sm font-semibold text-slate-900">
-            Our founder is a career educator, not a business world implant.
-          </p>
-          <p className="mt-2 text-sm text-slate-700">
-            See what his Muslim and non-Muslim students have said about his teaching, from his training of undergraduate student-teachers
-            at the University of Georgia, to his years teaching in U.S. public schools, to his work teaching online university courses (IOU),
-            where his course materials and book continue to be used.
+            Our founder is a career educator, not a business world implant. See what his Muslim and non-Muslim students have said about his teaching, from his training of undergraduate student-teachers at the University of Georgia to his years teaching at Tier 1 Public Schools in the U.S., to his work with Dr. Bilal Philips' International Online University (where his course and book are still taught)
           </p>
 
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {/* UGA course evals */}
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
               “Mr Sabrin was very fun and energetic! He made the 3 hour course bearable and had numerous activities for us to participate in every class meeting.”
               <div className="mt-2 text-xs font-semibold text-slate-600">University of Georgia course evaluation</div>
@@ -117,18 +111,16 @@ export default function About() {
               <div className="mt-2 text-xs font-semibold text-slate-600">University of Georgia course evaluation</div>
             </blockquote>
 
-            {/* IOU testimonials */}
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
               “He demonstrates mastery of his subject matter and breaks difficult concepts into simple chunks.”
-              <div className="mt-2 text-xs font-semibold text-slate-600">IOU learner feedback</div>
+              <div className="mt-2 text-xs font-semibold text-slate-600">International Online University learner feedback</div>
             </blockquote>
 
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
               “The instructor was a very lively person… I genuinely enjoyed his classes… he worked best for me, mashaa Allah.”
-              <div className="mt-2 text-xs font-semibold text-slate-600">IOU learner feedback</div>
+              <div className="mt-2 text-xs font-semibold text-slate-600">International Online University learner feedback</div>
             </blockquote>
 
-            {/* Longer student email excerpts (short, parent-friendly) */}
             <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
               “You have truly given a voice to my thoughts… jazakallahu kheyran for this wonderful eye opening piece.”
               <div className="mt-2 text-xs font-semibold text-slate-600">Student message</div>
