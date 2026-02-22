@@ -11,7 +11,7 @@ export default function Tuition() {
         <title>Tuition &amp; Fees | Andalus International School of Qur&apos;an &amp; AI</title>
         <meta
           name="description"
-          content="Tuition and fee details for Andalus International School of Qur’an & AI. Download the official Tuition & Fees PDF."
+          content="Tuition and fee details for Andalus International School of Qur’an & AI. Download the Tuition & Fees PDF."
         />
       </Helmet>
 
@@ -19,7 +19,7 @@ export default function Tuition() {
 
       <Section title="Tuition &amp; Fees" eyebrow="Tuition">
         <p className="text-sm text-slate-700">
-          Tuition, deposit, refund, and payment policy details are provided in the official Tuition &amp; Fees PDF.
+          Tuition and fee details are provided in the official Tuition &amp; Fees PDF.
         </p>
 
         <div className="mt-5 flex flex-wrap gap-3">
