@@ -19,6 +19,7 @@ export default function About() {
 
       <Section title="About Andalus" eyebrow="Mission & Founder">
         <div className="grid gap-6 md:grid-cols-2">
+          {/* Mission */}
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <p className="text-sm font-semibold text-slate-900">Our mission</p>
             <p className="mt-2 text-sm text-slate-700">
@@ -33,6 +34,7 @@ export default function About() {
             </div>
           </div>
 
+          {/* Founder */}
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <p className="text-sm font-semibold text-slate-900">Founder</p>
 
@@ -90,6 +92,57 @@ export default function About() {
               </div>
             </blockquote>
           </div>
+        </div>
+
+        {/* Testimonials block (your requested intro + selected quotes) */}
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <p className="text-sm font-semibold text-slate-900">
+            Our founder is a career educator, not a business world implant.
+          </p>
+          <p className="mt-2 text-sm text-slate-700">
+            See what his Muslim and non-Muslim students have said about his teaching, from his training of undergraduate student-teachers
+            at the University of Georgia, to his years teaching in U.S. public schools, to his work teaching online university courses (IOU),
+            where his course materials and book continue to be used.
+          </p>
+
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            {/* UGA course evals */}
+            <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              “Mr Sabrin was very fun and energetic! He made the 3 hour course bearable and had numerous activities for us to participate in every class meeting.”
+              <div className="mt-2 text-xs font-semibold text-slate-600">University of Georgia course evaluation</div>
+            </blockquote>
+
+            <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              “Our teacher was prepared for class and kept us engaged… There was very little lecturing but mostly learning through discovery and discussion.”
+              <div className="mt-2 text-xs font-semibold text-slate-600">University of Georgia course evaluation</div>
+            </blockquote>
+
+            {/* IOU testimonials */}
+            <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              “He demonstrates mastery of his subject matter and breaks difficult concepts into simple chunks.”
+              <div className="mt-2 text-xs font-semibold text-slate-600">IOU learner feedback</div>
+            </blockquote>
+
+            <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              “The instructor was a very lively person… I genuinely enjoyed his classes… he worked best for me, mashaa Allah.”
+              <div className="mt-2 text-xs font-semibold text-slate-600">IOU learner feedback</div>
+            </blockquote>
+
+            {/* Longer student email excerpts (short, parent-friendly) */}
+            <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              “You have truly given a voice to my thoughts… jazakallahu kheyran for this wonderful eye opening piece.”
+              <div className="mt-2 text-xs font-semibold text-slate-600">Student message</div>
+            </blockquote>
+
+            <blockquote className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              “I have been listening to you when I walk, when I work, and when I drive… That’s the power of being a good teacher.”
+              <div className="mt-2 text-xs font-semibold text-slate-600">Student message</div>
+            </blockquote>
+          </div>
+
+          <p className="mt-3 text-xs text-slate-600">
+            (Testimonials excerpted from prior learner feedback and correspondence.)
+          </p>
         </div>
       </Section>
 
