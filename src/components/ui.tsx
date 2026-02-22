@@ -12,7 +12,7 @@ export const PDFS = {
 
 export const IMAGES = {
   banner: "/andalus_banner_clean.png",
-  founder: "/founder.jpg" // put your black-and-white photo in /public/founder.jpg
+  founder: "/founder.jpg", // <-- only new repo change you want
 };
 
 export const HIDAAH_STORE_URL =
