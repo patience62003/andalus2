@@ -20,20 +20,15 @@ export default function Home() {
       {/* HERO */}
       <section className="bg-slate-50">
         <div className="mx-auto max-w-5xl px-4 pb-10 pt-2 sm:px-6 lg:px-0">
-          {/* HARD CROP BANNER: fixed height + overflow hidden + slight zoom */}
-          <div className="mb-5 overflow-hidden rounded-3xl shadow-md">
-            <div className="h-44 sm:h-52 md:h-60">
-              <img
-                src="/andalus_banner_clean.png"
-                alt="Andalus International School of Qur'an & AI banner"
-                className="h-full w-full object-cover"
-                style={{
-                  transform: "scale(1.25)", // zoom in to remove baked-in white padding
-                  transformOrigin: "center",
-                  objectPosition: "center",
-                }}
-              />
-            </div>
+          {/* BANNER: no fixed height, no crop, no zoom (prevents cut-off on desktop & mobile) */}
+          <div className="mb-5 overflow-hidden rounded-3xl bg-white shadow-md ring-1 ring-black/5">
+            <img
+              src="/andalus_banner_clean.png"
+              alt="Andalus International School of Qur'an & AI banner"
+              className="block w-full h-auto"
+              loading="eager"
+              decoding="async"
+            />
           </div>
 
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
