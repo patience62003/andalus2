@@ -17,15 +17,23 @@ export default function Home() {
 
       <Navbar />
 
+      {/* HERO */}
       <section className="bg-slate-50">
-        <div className="mx-auto max-w-5xl px-4 pb-10 pt-6 sm:px-6 lg:px-0">
-          {/* CROPPED BANNER (removes empty padding inside image) */}
-          <div className="mb-8 overflow-hidden rounded-3xl shadow-md">
-            <img
-              src="/andalus_banner_clean.png"
-              alt="Andalus International School of Qur'an & AI banner"
-              className="h-56 w-full object-cover sm:h-72 md:h-80"
-            />
+        <div className="mx-auto max-w-5xl px-4 pb-10 pt-2 sm:px-6 lg:px-0">
+          {/* HARD CROP BANNER: fixed height + overflow hidden + slight zoom */}
+          <div className="mb-5 overflow-hidden rounded-3xl shadow-md">
+            <div className="h-44 sm:h-52 md:h-60">
+              <img
+                src="/andalus_banner_clean.png"
+                alt="Andalus International School of Qur'an & AI banner"
+                className="h-full w-full object-cover"
+                style={{
+                  transform: "scale(1.25)", // zoom in to remove baked-in white padding
+                  transformOrigin: "center",
+                  objectPosition: "center",
+                }}
+              />
+            </div>
           </div>
 
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
@@ -44,12 +52,9 @@ export default function Home() {
           </div>
 
           <p className="mt-5 text-sm leading-relaxed text-slate-700">
-            Andalus is a Qur&apos;an-centric online school for serious practicing
-            Muslim families globally. Pupils study Qur&apos;an with deep understanding
-            anchored in Tafseer al-Qurtubi, and follow a Cambridge-aligned pathway
-            in English for Mathematics, Science, Computing, and Global Perspectives.
-            AI supports practice and projects under clear boundaries, while teachers
-            remain the murabbīn.
+            Andalus is a Qur&apos;an-centric online school for serious practicing Muslim families globally. Pupils study Qur&apos;an with deep understanding
+            anchored in Tafseer al-Qurtubi, and follow a Cambridge-aligned pathway in English for Mathematics, Science, Computing, and Global Perspectives.
+            AI supports practice and projects under clear boundaries, while teachers remain the murabbīn.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -60,8 +65,7 @@ export default function Home() {
 
       <Section title="Why Families Choose Andalus" eyebrow="Highlights">
         <p className="mb-4">
-          A focused online environment designed for serious Muslim families who
-          want Qur&apos;an, character, and academic excellence together.
+          A focused online environment designed for serious Muslim families who want Qur&apos;an, character, and academic excellence together.
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">
