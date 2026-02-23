@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Pill, Section, HighlightCard, ApplyButton, IMAGES } from "../components/ui";
+import { Pill, Section, HighlightCard, ApplyButton } from "../components/ui";
 
 export default function Home() {
   return (
@@ -19,11 +19,14 @@ export default function Home() {
 
       <section className="bg-slate-50">
         <div className="mx-auto max-w-5xl px-4 pb-10 pt-6 sm:px-6 lg:px-0">
-          <img
-            src={IMAGES.banner}
-            alt="Andalus International School of Qur'an & AI banner"
-            className="mb-8 w-full rounded-3xl object-cover shadow-md"
-          />
+          {/* CROPPED BANNER (removes empty padding inside image) */}
+          <div className="mb-8 overflow-hidden rounded-3xl shadow-md">
+            <img
+              src="/andalus_banner_clean.png"
+              alt="Andalus International School of Qur'an & AI banner"
+              className="h-56 w-full object-cover sm:h-72 md:h-80"
+            />
+          </div>
 
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
             Online bilingual Islamic school
@@ -41,9 +44,12 @@ export default function Home() {
           </div>
 
           <p className="mt-5 text-sm leading-relaxed text-slate-700">
-            Andalus is a Qur&apos;an-centric online school for serious practicing Muslim families globally. Pupils study Qur&apos;an with
-            deep understanding anchored in Tafseer al-Qurtubi, and follow a Cambridge-aligned pathway in English for Mathematics, Science,
-            Computing, and Global Perspectives. AI supports practice and projects under clear boundaries, while teachers remain the murabbīn.
+            Andalus is a Qur&apos;an-centric online school for serious practicing
+            Muslim families globally. Pupils study Qur&apos;an with deep understanding
+            anchored in Tafseer al-Qurtubi, and follow a Cambridge-aligned pathway
+            in English for Mathematics, Science, Computing, and Global Perspectives.
+            AI supports practice and projects under clear boundaries, while teachers
+            remain the murabbīn.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -54,7 +60,8 @@ export default function Home() {
 
       <Section title="Why Families Choose Andalus" eyebrow="Highlights">
         <p className="mb-4">
-          A focused online environment designed for serious Muslim families who want Qur&apos;an, character, and academic excellence together.
+          A focused online environment designed for serious Muslim families who
+          want Qur&apos;an, character, and academic excellence together.
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -75,9 +82,15 @@ export default function Home() {
 
       <Section title="How to Apply" eyebrow="Admissions">
         <ol className="space-y-2 text-sm">
-          <li><span className="font-semibold">1)</span> Complete the Apply / Interest List form (one per family).</li>
-          <li><span className="font-semibold">2)</span> If there is a potential fit, we schedule a short call and a simple placement check.</li>
-          <li><span className="font-semibold">3)</span> Families receive next-step instructions and onboarding guidance.</li>
+          <li>
+            <span className="font-semibold">1)</span> Complete the Apply / Interest List form (one per family).
+          </li>
+          <li>
+            <span className="font-semibold">2)</span> If there is a potential fit, we schedule a short call and a simple placement check.
+          </li>
+          <li>
+            <span className="font-semibold">3)</span> Families receive next-step instructions and onboarding guidance.
+          </li>
         </ol>
 
         <div className="mt-5">
