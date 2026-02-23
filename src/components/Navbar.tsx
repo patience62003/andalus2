@@ -19,8 +19,15 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-0">
-        <Link to="/" className="text-base font-extrabold tracking-tight text-slate-900">
-          Andalus
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src="/andalus_logo_en_300.png"
+            alt="Andalus logo"
+            className="h-9 w-9 rounded-lg object-contain"
+          />
+          <span className="text-base font-extrabold tracking-tight text-slate-900">
+            Andalus
+          </span>
         </Link>
 
         <div className="hidden items-center gap-6 text-sm md:flex">
