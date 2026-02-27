@@ -22,7 +22,7 @@ function toMinutes(hhmm) {
 /**
  * Live block anchored in Makkah time (UTC+3).
  * Displays equivalents using fixed UTC offsets.
- * Includes countries that fall within 6:00 am to 10:00 pm local time for this cohort.
+ * Includes locations that fall within 6:00 am to 10:00 pm local time for this cohort.
  */
 export default function ClassTimeBlock({
   makkahStart = "14:00",
@@ -37,8 +37,8 @@ export default function ClassTimeBlock({
   const utcStart = startM - makkahOffset * 60;
   const utcEnd = endM - makkahOffset * 60;
 
-  // Ranked by your priorities under this cohort timing.
-  // Excludes places where this block would end after 10:00 pm local (e.g., Malaysia/Singapore/Brunei).
+  // Ranked by your priorities (raw potential + fit + Cambridge presence),
+  // not grouped by region. All entries are within the 6am–10pm local window.
   const locations = [
     { label: "Makkah (Saudi Arabia)", offset: 3 },
 
@@ -54,10 +54,16 @@ export default function ClassTimeBlock({
 
     { label: "Turkey", offset: 3 },
 
+    // Europe (Cambridge / international-school presence; kept but deprioritized)
+    { label: "United Kingdom", offset: 0 },
+    { label: "Ireland", offset: 0 },
+
+    // North/West Africa (kept; fits schedule rule)
     { label: "Egypt", offset: 2 },
     { label: "Morocco", offset: 1 },
     { label: "South Africa", offset: 2 },
 
+    // Other viable Muslim-majority markets within the time window
     { label: "Bangladesh", offset: 6 },
     { label: "Indonesia (Jakarta)", offset: 7 },
   ];
