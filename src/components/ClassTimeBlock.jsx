@@ -1,71 +1,75 @@
 import React from "react";
 
-function pad2(n) {
-  return String(n).padStart(2, "0");
-}
-
-function format12h(totalMinutes) {
-  const mins = ((totalMinutes % 1440) + 1440) % 1440;
-  const h = Math.floor(mins / 60);
-  const m = mins % 60;
-  const ampm = h >= 12 ? "pm" : "am";
-  let h12 = h % 12;
-  if (h12 === 0) h12 = 12;
-  return `${h12}:${pad2(m)} ${ampm}`;
-}
-
-function toMinutes(hhmm) {
-  const [hh, mm] = hhmm.split(":").map(Number);
-  return hh * 60 + mm;
-}
-
-/**
- * Live block anchored in Makkah time (UTC+3).
- * Displays equivalents using fixed UTC offsets.
- * Includes locations that fall within 6:00 am to 10:00 pm local time for this cohort.
- */
-export default function ClassTimeBlock({
-  makkahStart = "14:00",
-  makkahEnd = "18:00",
-}) {
-  const makkahOffset = 3; // UTC+3
-
-  const startM = toMinutes(makkahStart);
-  const endM = toMinutes(makkahEnd);
-
-  // Convert Makkah-local minutes to UTC minutes
-  const utcStart = startM - makkahOffset * 60;
-  const utcEnd = endM - makkahOffset * 60;
-
-  // Ranked by your priorities (raw potential + fit + Cambridge presence),
-  // not grouped by region. All entries are within the 6am–10pm local window.
+export default function ClassTimeBlock() {
   const locations = [
-    { label: "Makkah (Saudi Arabia)", offset: 3 },
-
-    { label: "United Arab Emirates", offset: 4 },
-    { label: "Oman", offset: 4 },
-
-    { label: "Pakistan", offset: 5 },
-
-    { label: "Kuwait", offset: 3 },
-    { label: "Qatar", offset: 3 },
-    { label: "Bahrain", offset: 3 },
-    { label: "Jordan", offset: 3 },
-
-    { label: "Turkey", offset: 3 },
-
-    // Europe (Cambridge / international-school presence; kept but deprioritized)
-    { label: "United Kingdom", offset: 0 },
-    { label: "Ireland", offset: 0 },
-
-    // North/West Africa (kept; fits schedule rule)
-    { label: "Egypt", offset: 2 },
-    { label: "Morocco", offset: 1 },
-    { label: "South Africa", offset: 2 },
-
-    // Other viable Muslim-majority markets within the time window
-    { label: "Bangladesh", offset: 6 },
-    { label: "Indonesia (Jakarta)", offset: 7 },
+    {
+      label: "Makkah (Saudi Arabia)",
+      time: "3:00 pm to 7:00 pm",
+    },
+    {
+      label: "United Arab Emirates",
+      time: "4:00 pm to 8:00 pm",
+    },
+    {
+      label: "Oman",
+      time: "4:00 pm to 8:00 pm",
+    },
+    {
+      label: "Pakistan",
+      time: "5:00 pm to 9:00 pm",
+    },
+    {
+      label: "Kuwait",
+      time: "3:00 pm to 7:00 pm",
+    },
+    {
+      label: "Qatar",
+      time: "3:00 pm to 7:00 pm",
+    },
+    {
+      label: "Bahrain",
+      time: "3:00 pm to 7:00 pm",
+    },
+    {
+      label: "Jordan",
+      time: "3:00 pm to 7:00 pm",
+    },
+    {
+      label: "Turkey",
+      time: "3:00 pm to 7:00 pm",
+    },
+    {
+      label: "United Kingdom",
+      time: "1:00 pm to 5:00 pm (BST)",
+      note: "12:00 pm to 4:00 pm during GMT",
+    },
+    {
+      label: "Ireland",
+      time: "1:00 pm to 5:00 pm (summer)",
+      note: "12:00 pm to 4:00 pm during winter",
+    },
+    {
+      label: "Egypt",
+      time: "3:00 pm to 7:00 pm (summer)",
+      note: "2:00 pm to 6:00 pm during standard time",
+    },
+    {
+      label: "Morocco",
+      time: "1:00 pm to 5:00 pm (most of the year)",
+      note: "May shift to 12:00 pm to 4:00 pm during the Ramadan clock change",
+    },
+    {
+      label: "South Africa",
+      time: "2:00 pm to 6:00 pm",
+    },
+    {
+      label: "Bangladesh",
+      time: "6:00 pm to 10:00 pm",
+    },
+    {
+      label: "Indonesia (Jakarta)",
+      time: "7:00 pm to 11:00 pm",
+    },
   ];
 
   return (
@@ -77,35 +81,48 @@ export default function ClassTimeBlock({
       <p className="mt-1 text-sm text-slate-700">
         Daily live classes run{" "}
         <span className="font-semibold">
-          {format12h(startM)} to {format12h(endM)}
+          Sunday through Thursday
+        </span>
+        ,{" "}
+        <span className="font-semibold">
+          3:00 pm to 7:00 pm
         </span>{" "}
         in <span className="font-semibold">Makkah time</span>.
       </p>
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        {locations.map((loc) => {
-          const localStart = utcStart + loc.offset * 60;
-          const localEnd = utcEnd + loc.offset * 60;
-
-          return (
-            <div
-              key={loc.label}
-              className="flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3"
-            >
+        {locations.map((loc) => (
+          <div
+            key={loc.label}
+            className="rounded-xl bg-slate-50 px-4 py-3"
+          >
+            <div className="flex items-start justify-between gap-4">
               <div className="text-sm font-medium text-slate-900">
                 {loc.label}
               </div>
-              <div className="text-sm text-slate-700">
-                {format12h(localStart)} to {format12h(localEnd)}
+
+              <div className="text-right text-sm text-slate-700">
+                {loc.time}
               </div>
             </div>
-          );
-        })}
+
+            {loc.note && (
+              <div className="mt-1 text-right text-xs text-slate-500">
+                {loc.note}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       <p className="mt-4 text-xs text-slate-600">
-        If these times do not work in your country, still join the Interest List.
-        We use demand to open additional cohorts.
+        Makkah time remains fixed at UTC+3. Countries that use seasonal
+        clock changes may shift by one hour during part of the year.
+      </p>
+
+      <p className="mt-2 text-xs text-slate-600">
+        If these times do not work in your country, still join the
+        Interest List. We use demand to open additional cohorts.
       </p>
     </div>
   );
