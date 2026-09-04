@@ -12,7 +12,7 @@ export const PDFS = {
 
 export const IMAGES = {
   banner: "/andalus_banner_clean.png",
-  founder: "/founder.jpg", // <-- only new repo change you want
+  founder: "/founder.jpg",
 };
 
 export const HIDAAH_STORE_URL =
@@ -45,9 +45,11 @@ export function Section({
             {eyebrow}
           </p>
         )}
+
         <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
           {title}
         </h2>
+
         <div className="mt-4 text-sm text-slate-700">{children}</div>
       </div>
     </section>
@@ -70,9 +72,23 @@ export function HighlightCard({
 }
 
 export function ApplyButton({ className = "" }: { className?: string }) {
+  const handleApplyClick = () => {
+    const gtag = (window as any).gtag;
+
+    if (typeof gtag === "function") {
+      gtag("event", "apply_click", {
+        button_text: "Apply / Join Interest List",
+        link_url: APPLY_URL,
+        page_location: window.location.href,
+      });
+    }
+
+    window.open(APPLY_URL, "_blank");
+  };
+
   return (
     <button
-      onClick={() => window.open(APPLY_URL, "_blank")}
+      onClick={handleApplyClick}
       className={
         "inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 " +
         className
